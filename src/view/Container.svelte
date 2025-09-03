@@ -11,6 +11,6 @@
 		max-width: 90vw;
 		margin: 0 auto;
 		padding: 0 1rem;
-		margin-bottom: 100px;
+		margin-bottom: 2rem;
 	}
 </style>

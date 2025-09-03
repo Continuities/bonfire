@@ -2,6 +2,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import Container from '@view/Container.svelte';
 	import Footer from '@view/Footer.svelte';
+	import LanguageToggle from '@view/LanguageToggle.svelte';
 
 	let { children } = $props();
 </script>
@@ -26,8 +27,29 @@
 	</style>
 </svelte:head>
 
-<Container>
-	{@render children?.()}
-</Container>
+<div class="top-right">
+	<LanguageToggle />
+</div>
 
-<Footer />
+<div class="wrapper">
+	<Container>
+		{@render children?.()}
+	</Container>
+
+	<Footer />
+</div>
+
+<style>
+	.top-right {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		z-index: 1000;
+	}
+	.wrapper {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+</style>

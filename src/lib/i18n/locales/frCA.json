@@ -1,8 +1,8 @@
 {
-  "the_openburn_project": "Le OpenBurn Project",
+  "the_openburn_project": "Le Projet OpenBurn",
   "did_you_know": "Le saviez-vous?",
   "did_you_know_content": "Certains termes et phrases au cœur de l'identité \"Burner\" sont propriété intellectuelle du Burning Man Project, et leur utilisation soumise à autorisation? Par exemple, \"<strong>Burning Man</strong>\", \"<strong>Decompression Party</strong>,\" et les <strong>Dix Principes</strong>. Pour l'obtenir, nous nous engageons à respecter des normes culturelles définies par le Burning Man Project. Mais cet engagement ne va que dans un sens, et nous n'avons aucun contrôle sur la marque ou le comportement du Burning Man Project.",
-  "license": "All content subject to the terms of the <a href=\"https://mozilla.org/MPL/2.0/\" target=\"__blank\">Mozilla Public License</a>",
-  "communal_values": "Communal Values",
-  "some_we_like":"Some we like"
+  "license": "Tout le contenu est assujetti aux conditions de la <a href=\"https://mozilla.org/MPL/2.0/\" target=\"__blank\">License Publique Mozilla</a>",
+  "communal_values": "Valeurs Communautaires",
+  "some_we_like":"Certains qu'on aime"
 }

@@ -5,7 +5,9 @@ import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async () => {
 	if (browser) {
-		locale.set(window.navigator.language);
+		const defaultLang = window.navigator.language;
+		const urlLang = new URLSearchParams(window.location.search).get('lang');
+		locale.set(urlLang ?? defaultLang);
 	}
 	await waitLocale();
 };

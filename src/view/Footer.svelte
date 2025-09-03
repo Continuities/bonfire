@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Paper from '@smui/paper';
 	import { _ } from 'svelte-i18n';
 </script>
 
@@ -9,7 +8,6 @@
 
 <style>
 	.footer {
-		position: fixed;
 		bottom: 0;
 		width: 100vw;
 		background: var(--mdc-theme-surface);

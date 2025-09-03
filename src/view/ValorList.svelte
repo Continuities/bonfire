@@ -19,7 +19,10 @@
 	<Content>
 		<Set chips={valorIds}>
 			{#snippet chip(valorId)}
-				<ValorChip {onclick} valor={valorMap.get(valorId)} />
+				<ValorChip
+					onclick={onclick ? () => onclick(valorMap.get(valorId) as Model.Valor) : undefined}
+					valor={valorMap.get(valorId)}
+				/>
 			{/snippet}
 		</Set>
 	</Content>

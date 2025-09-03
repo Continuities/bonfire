@@ -12,8 +12,8 @@ declare global {
 	namespace Model {
 		interface Valor {
 			id: string;
-			name: string;
-			description: string;
+			name: I19n.LocaleText;
+			description: I19n.LocaleText;
 			icon?: string;
 		}
 	}
@@ -29,6 +29,10 @@ declare global {
 			mx?: MarginValue;
 			my?: MarginValue;
 		}
+	}
+
+	namespace I18n {
+		type LocaleText = string | Record<string, string>;
 	}
 }
 
