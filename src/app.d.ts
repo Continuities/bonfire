@@ -16,6 +16,12 @@ declare global {
 			description: I19n.LocaleText;
 			icon?: string;
 		}
+		interface Tool {
+			id: string;
+			name: I19n.LocaleText;
+			description: I19n.LocaleText;
+			url: string;
+		}
 	}
 
 	namespace View {

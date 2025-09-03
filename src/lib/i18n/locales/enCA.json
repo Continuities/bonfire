@@ -2,9 +2,15 @@
   "the_openburn_project": "The OpenBurn Project",
   "did_you_know": "Did you know?",
   "did_you_know_content": "Certain terms and phrases at the core of the \"burner\" identity are actually intellectual property, and using them requires a license from The Burning Man Project. Things like \"<strong>Burning Man</strong>,\" \"<strong>Decompression Party</strong>,\" and all of the <strong>Ten Principles</strong>. To license this stuff, communities agree to behave within certain cultural norms defined by The Burning Man Project. This agreement does not work both ways, and licensors have no control over the brand that they have licensed nor the behaviour of The Burning Man Project itself.",
-  "what_is_openburn_content": "The OpenBurn Project exists to create and maintain a set of open source tools and resources that empower communities to define themselves, organise, and create experiences together. Everything will always be free to use, copy, modify, and distribute in any way. This toolkit is intended as a support in community-building, but communities have different needs and no one toolkit can meet them all. Use the parts that work, and ignore the parts that don't. We welcome contributions to the project from anyone who wants to help make things better.",
-  "community_needs": "We believe that successful communities are united by <strong>communal values</strong>, enabled by <strong>open source tools</strong>, and <strong>connected</strong> to like-minded communities.",
+  "what_is_openburn_content": "The OpenBurn Project exists to create and maintain a set of open source tools and resources that empower communities to define themselves, organise, and create experiences together. Everything will always be free to use, copy, modify, and distribute in any way. This toolkit is intended to support community-building, but communities have different needs and no one toolkit can meet them all. Use the parts that work, and ignore the parts that don't. We welcome contributions to the project from anyone who wants to help make things better.",
+  "community_needs": "We believe that successful communities are united by <strong>communal values</strong>, enabled by open source <strong>tools</strong>, and <strong>connected</strong> to like-minded communities. The OpenBurn Project aims to provide resources to support communities in each of those areas.",
   "license": "All content subject to the terms of the <a href=\"https://mozilla.org/MPL/2.0/\" target=\"__blank\">Mozilla Public License</a>",
   "communal_values": "Communal Values",
-  "some_we_like":"Some we like"
+  "communal_values_description": "Communities are built on shared values. Knowing the core values that define your community can help guide collective action. We suggest picking a few that resonate with your community and keeping them in mind when making group decisions. Choose anything you like, but it can be helpful to see what drives other communities.",
+  "some_we_like":"Some we like",
+  "tools": "Tools",
+  "tools_content": "Community and event management often requires the assistance of software tools. Here are some that we've found useful:",
+  "connection": "Connection",
+  "connection_content": "We believe that communities are stronger when they are connected to other like-minded communities. The OpenBurn Project will eventually include a directory of communities open to collaboration and connection.",
+  "check_back_later": "Check back later for updates."
 }

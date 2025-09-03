@@ -1,11 +1,14 @@
 <script lang="ts">
-	import { _ } from 'svelte-i18n';
+	import { _, locale } from 'svelte-i18n';
 	import Paper, { Title, Content } from '@smui/paper';
 	import PageTitle from '@view/PageTitle.svelte';
 	import ValueList from '@view/ValorList.svelte';
 	import ValorDialog from '@view/ValorDialog.svelte';
+	import List, { Item, Text, PrimaryText, SecondaryText } from '@smui/list';
 	import Stack from '@view/Stack.svelte';
 	import valors from '$lib/valor-store';
+	import tools from '$lib/tool-store';
+	import { resolveText } from '$lib/i18n';
 
 	let displayingValor = $state<Model.Valor | null>(null);
 </script>
@@ -39,6 +42,34 @@
 					onclick={(valor) => (displayingValor = valor)}
 				></ValueList>
 			</Stack>
+		</Content>
+	</Paper>
+
+	<Paper>
+		<Title>{$_('tools')}</Title>
+		<Content>
+			<p>{@html $_('tools_content')}</p>
+			<List nonInteractive threeLine>
+				{#each $tools as tool (tool.id)}
+					<Item>
+						<Text>
+							<PrimaryText
+								><a href={tool.url} target="_blank">{resolveText(tool.name, $locale)}</a
+								></PrimaryText
+							>
+							<SecondaryText>{resolveText(tool.description, $locale)}</SecondaryText>
+						</Text>
+					</Item>
+				{/each}
+			</List>
+		</Content>
+	</Paper>
+
+	<Paper>
+		<Title>{$_('connection')}</Title>
+		<Content>
+			<p>{@html $_('connection_content')}</p>
+			<p>{$_('check_back_later')}</p>
 		</Content>
 	</Paper>
 </Stack>
