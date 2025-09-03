@@ -8,6 +8,28 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+
+	namespace Model {
+		interface Valor {
+			id: string;
+			name: string;
+			description: string;
+			icon?: string;
+		}
+	}
+
+	namespace View {
+		type MarginValue = number; // For now, just rem units
+		interface MarginProps {
+			margin?: MarginValue;
+			mt?: MarginValue;
+			mr?: MarginValue;
+			mb?: MarginValue;
+			ml?: MarginValue;
+			mx?: MarginValue;
+			my?: MarginValue;
+		}
+	}
 }
 
 export {};

@@ -2,30 +2,50 @@
 	import { _ } from 'svelte-i18n';
 	import Paper, { Title, Content } from '@smui/paper';
 	import PageTitle from '@view/PageTitle.svelte';
+	import ValueList from '@view/ValorList.svelte';
+	import ValorDialog from '@view/ValorDialog.svelte';
+	import Stack from '@view/Stack.svelte';
+	import valors from '$lib/valor-store';
+
+	let displayingValor = $state<Model.Valor | null>(null);
 </script>
 
 <PageTitle title={$_('the_openburn_project')} />
 
-<div class="list">
+<Stack gap={2}>
 	<Paper>
 		<Title>{$_('did_you_know')}</Title>
 		<Content>
-			{@html $_('did_you_know_content')}
+			<p>{@html $_('did_you_know_content')}</p>
 		</Content>
 	</Paper>
 
 	<Paper>
 		<Title>{$_('the_openburn_project')}</Title>
 		<Content>
-			{@html $_('what_is_openburn_content')}
+			<p>{@html $_('what_is_openburn_content')}</p>
 		</Content>
 	</Paper>
-</div>
+
+	<Paper>
+		<Title>{$_('communal_values')}</Title>
+		<Content>
+			<Stack>
+				<p>{@html $_('communal_values_description')}</p>
+				<ValueList
+					title={$_('some_we_like')}
+					valors={$valors}
+					onclick={(valor) => (displayingValor = valor)}
+				></ValueList>
+			</Stack>
+		</Content>
+	</Paper>
+</Stack>
+
+<ValorDialog valor={displayingValor} onclose={() => (displayingValor = null)} />
 
 <style>
-	.list {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
+	p {
+		margin: 0;
 	}
 </style>

@@ -3,13 +3,14 @@
 </script>
 
 <main class="container">
-  {@render children?.()}
+	{@render children?.()}
 </main>
 
 <style>
-  .container {
-    max-width: 90vw;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
+	.container {
+		max-width: 90vw;
+		margin: 0 auto;
+		padding: 0 1rem;
+		margin-bottom: 100px;
+	}
 </style>
