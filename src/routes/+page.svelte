@@ -24,6 +24,7 @@
 		<Title>{$_('the_openburn_project')}</Title>
 		<Content>
 			<p>{@html $_('what_is_openburn_content')}</p>
+			<p>{@html $_('community_needs')}</p>
 		</Content>
 	</Paper>
 
@@ -45,7 +46,4 @@
 <ValorDialog valor={displayingValor} onclose={() => (displayingValor = null)} />
 
 <style>
-	p {
-		margin: 0;
-	}
 </style>
