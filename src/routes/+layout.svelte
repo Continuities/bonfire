@@ -24,6 +24,7 @@
 		body {
 			margin: 0;
 			overflow-x: hidden;
+			width: 100vw;
 		}
 	</style>
 </svelte:head>
