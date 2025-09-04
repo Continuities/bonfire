@@ -4,6 +4,15 @@ import { readable } from 'svelte/store';
  *       support community-sourced additions and edits. */
 export default readable<Model.Tool[]>([
 	{
+		id: 'cobudget',
+		name: 'Cobudget',
+		description: {
+			en: 'Cobudget is an open source platform for collaborative budgeting and decision-making. It allows communities to allocate funds collectively and transparently.',
+			fr: "Cobudget est une plateforme open source pour la budgétisation collaborative et la prise de décision. Elle permet aux communautés d'allouer des fonds de manière collective et transparente."
+		},
+		url: 'https://www.cobudget.com/'
+	},
+	{
 		id: 'pretix',
 		name: 'Pretix',
 		description: {
