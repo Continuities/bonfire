@@ -4,8 +4,6 @@
 	import { locale } from 'svelte-i18n';
 	import Button, { Group, Label } from '@smui/button';
 
-	$effect(() => console.log($locale));
-
 	const setLanguage = (lang: string) => {
 		const newParams = new URLSearchParams(page.url.searchParams);
 		newParams.set('lang', lang);
