@@ -14,7 +14,8 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"build:theme-light": "smui-theme compile static/smui.css -i src/theme",
-		"build:theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark"
+		"build:theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
+		"deploy": "npm run build && gcloud app deploy --project openburn-471023 --version staging --no-promote build/app.yaml"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
@@ -39,6 +40,7 @@
 		"prettier-plugin-svelte": "^3.3.3",
 		"smui-theme": "^8.0.3",
 		"svelte": "^5.0.0",
+		"svelte-adapter-appengine": "^1.2.0",
 		"svelte-check": "^4.0.0",
 		"svelte-i18n": "^4.0.1",
 		"typescript": "^5.0.0",
