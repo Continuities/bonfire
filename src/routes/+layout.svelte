@@ -3,6 +3,7 @@
 	import Container from '@view/Container.svelte';
 	import Footer from '@view/Footer.svelte';
 	import LanguageToggle from '@view/LanguageToggle.svelte';
+	import WIPOverlay from '@view/WIPOverlay.svelte';
 
 	let { children } = $props();
 </script>
@@ -40,6 +41,8 @@
 
 	<Footer />
 </div>
+
+<WIPOverlay />
 
 <style>
 	.top-right {
