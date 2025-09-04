@@ -29,5 +29,32 @@ export default readable<Model.Tool[]>([
 			fr: "Le système de bénévolat FAI est une plateforme open source pour la gestion des bénévoles lors d'événements. Il permet la planification, l'affectation des tâches et la communication avec les bénévoles. C'est un vieux PHP bancal, mais de nombreuses communautés l'utilisent."
 		},
 		url: 'https://github.com/Flashpoint-Artists-Initiative/Volunteering'
+	},
+		{
+		id: 'opencollective',
+		name: 'Open Collective',
+		description: {
+			en: "Open Collective is an open-source set of tools to transparently manage large-scale community budgets. You can also apply to have your funds legally managed (for taxes and such) by a Fiscal Host for a fee, but you don't have to.",
+			fr: "Open Collective est un ensemble d'outils open source permettant de gérer de manière transparente les budgets communautaires à grande échelle. Vous pouvez également demander à ce que vos fonds soient gérés légalement (pour les impôts et autres) par un hôte fiscal moyennant des frais, mais ce n'est pas obligatoire."
+		},
+		url: 'https://github.com/opencollective/opencollective'
+	},
+		{
+		id: 'leaflet',
+		name: 'Leaflet Map Library',
+		description: {
+			en: "Leaflet is an open-source java library to create interactive maps. The Borderland have used it to create their collaborative placement system you can find here : https://github.com/theborderland/map",
+			fr: "Leaflet est une librairie Java open source permettant de créer des cartes interactives. The Borderland l'a utilisée pour créer son système de placement collaboratif, que vous pouvez trouver ici : https://github.com/theborderland/map"
+		},
+		url: 'https://github.com/Leaflet/Leaflet'
+	},
+		{
+		id: 'loomio',
+		name: 'Loomio',
+		description: {
+			en: "Loomio is open-source tool for collaborative decision making. It allows to set up online decision making systems that include the whole community.",
+			fr: "Loomio est un outil open source destiné à la prise de décision collaborative. Il permet de mettre en place des systèmes de prise de décision en ligne qui incluent l'ensemble de la communauté."
+		},
+		url: 'https://github.com/loomio/loomio'
 	}
 ]);
