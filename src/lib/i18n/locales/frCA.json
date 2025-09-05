@@ -4,7 +4,7 @@
   "did_you_know": "Le saviez-vous?",
   "did_you_know_content": "Certains termes et phrases au cœur de l'identité \"Burner\" sont propriété intellectuelle du Burning Man Project, et leur utilisation soumise à autorisation? Par exemple, \"<strong>Burning Man</strong>\", \"<strong>Decompression Party</strong>,\" et les <strong>Dix Principes</strong>. Pour l'obtenir, les communautés s'engagent à respecter des normes culturelles définies par le Burning Man Project. Mais cet engagement ne va que dans un sens, et les concédants de licence n'ont aucun contrôle sur la marque ou le comportement du Burning Man Project.",
   "what_is_openburn_content": "Le Projet OpenBurn a pour but de créer et maintenir un ensemble d'outils et de ressources open source permettant aux communautés de se définir, s'organiser et créer des expériences ensemble. Tout sera toujours gratuit à utiliser, copier, modifier et distribuer de quelque manière que ce soit. Cette boîte à outils est destinée à soutenir la construction de communautés, mais chaque communauté a des besoins différents et aucune boîte à outils ne peut les satisfaire tous. Utilisez les parties qui fonctionnent, et ignorez celles qui ne fonctionnent pas. Nous accueillons les contributions de toute personne souhaitant aider à améliorer les choses.",
-  "community_needs": "Nous croyons que les communautés prospères sont unies par des <strong>valeurs communautaires</strong>, rendues possibles par des <strong>outils</strong> open source, et <strong>connectées</strong> à des communautés partageant les mêmes idées. Le Projet OpenBurn vise à fournir des ressources pour soutenir les communautés dans chacun de ces domaines.",
+  "community_needs": "Nous croyons que les communautés prospères sont unies par des <strong>valeurs communautaires</strong>, soutenues par des <strong>outils</strong> open source, et renforcées par un solide <strong>réseau</strong> mondial. Le Projet OpenBurn vise à fournir des ressources pour soutenir les communautés dans chacun de ces domaines.",
   "license": "Tout le contenu est assujetti aux conditions de la <a href=\"https://mozilla.org/MPL/2.0/\" target=\"__blank\">License Publique Mozilla</a>",
   "communal_values": "Valeurs Communautaires",
   "communal_values_description": "Les communautés se construisent sur des valeurs partagées. Connaître les valeurs fondamentales qui définissent votre communauté peut aider à guider l'action collective. Nous suggérons d'en choisir quelques-unes qui résonnent avec votre communauté et de les garder à l'esprit lors de la prise de décisions de groupe. Choisissez ce que vous voulez, mais il peut être utile de voir ce qui motive d'autres communautés.",
@@ -12,8 +12,8 @@
   "some_we_like":"Certains qu'on aime",
   "tools": "Outils",
   "tools_content": "La gestion communautaire et événementielle nécessite souvent l'aide d'outils logiciels. En voici quelques-uns que nous avons trouvés utiles :",
-  "connection": "Connexion",
-  "connection_content": "Nous croyons que les communautés sont plus fortes lorsqu'elles sont connectées à d'autres communautés partageant les mêmes idées. Le Projet OpenBurn inclura éventuellement un annuaire des communautés ouvertes à la collaboration et à la connexion.",
+  "network": "Le Réseau OpenBurn",
+  "network_content": "Nous croyons que les communautés sont plus fortes lorsqu'elles sont connectées à d'autres communautés partageant les mêmes idées. Le Réseau OpenBurn sera un annuaire de communautés et une bibliothèque partagée de ressources.",
   "check_back_later": "Revenez plus tard pour des mises à jour.",
   "community_network": "Réseau Communautaire"
 }

@@ -70,9 +70,9 @@
 	</Paper>
 
 	<Paper>
-		<Title>{$_('connection')}</Title>
+		<Title>{$_('network')}</Title>
 		<Content>
-			<p>{@html $_('connection_content')}</p>
+			<p>{@html $_('network_content')}</p>
 			<p>{$_('check_back_later')}</p>
 		</Content>
 	</Paper>
