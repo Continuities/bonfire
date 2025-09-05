@@ -35,7 +35,10 @@
 		<Title>{$_('communal_values')}</Title>
 		<Content>
 			<Stack>
-				<p>{@html $_('communal_values_description')}</p>
+				<div>
+					<p>{@html $_('communal_values_description')}</p>
+					<p>{@html $_('value_realignment')}</p>
+				</div>
 				<Paper variant="outlined">
 					<Title>{$_('some_we_like')}</Title>
 					<Content>
