@@ -4,20 +4,24 @@
 
 	type Props = {
 		title?: string;
-		valors: Model.Valor[];
+		valors: Record<Model.ValorId, Model.Valor>;
 		onclick?: (valor: Model.Valor) => void;
+		name?: string;
 	};
 
-	let { valors, onclick }: Props = $props();
-	let valorIds = $derived(valors.map((v) => v.id));
-	let valorMap = $derived(new Map(valors.map((v) => [v.id, v])));
+	let { valors, onclick, name }: Props = $props();
+	let valorIds = $derived(Object.values(valors).map((v) => v.id));
 </script>
 
 <Set chips={valorIds}>
 	{#snippet chip(valorId)}
 		<ValorChip
-			onclick={onclick ? () => onclick(valorMap.get(valorId) as Model.Valor) : undefined}
-			valor={valorMap.get(valorId)}
+			onclick={onclick ? () => onclick(valors[valorId]) : undefined}
+			valor={valors[valorId]}
 		/>
 	{/snippet}
 </Set>
+
+{#if name}
+	<input type="hidden" {name} value={JSON.stringify(valors)} />
+{/if}

@@ -7,8 +7,8 @@ export const COMMUNITIES: Model.Community[] = [
 			de: 'Ein Netzwerk von Landwirten, Ingenieuren und Unterstützern, die den Global Village Construction Set aufbauen, eine Open-Source-, kostengünstige, leistungsstarke Plattform, die die einfache Herstellung der 50 verschiedenen Industriemaschinen ermöglicht, die zum Bau einer kleinen Zivilisation mit modernen Annehmlichkeiten erforderlich sind.'
 		},
 		url: 'https://opensourceecology.org',
-		valors: [
-			{
+		valors: {
+			'1': {
 				id: '1',
 				name: { en: 'Open Source', de: 'Open Source' },
 				description: {
@@ -17,7 +17,7 @@ export const COMMUNITIES: Model.Community[] = [
 				},
 				icon: '🌐'
 			}
-		],
+		},
 		tools: []
 	},
 	{
@@ -28,8 +28,8 @@ export const COMMUNITIES: Model.Community[] = [
 			de: 'Eine Gemeinschaft von Landwirten und Innovatoren, die Open-Source-Werkzeuge und Ideen teilen, um landwirtschaftliche Praktiken und Nachhaltigkeit zu verbessern.'
 		},
 		url: 'https://farmhack.org',
-		valors: [
-			{
+		valors: {
+			'1': {
 				id: '1',
 				name: { en: 'Collaboration', de: 'Zusammenarbeit' },
 				description: {
@@ -38,7 +38,7 @@ export const COMMUNITIES: Model.Community[] = [
 				},
 				icon: '🤝'
 			}
-		],
+		},
 		tools: []
 	},
 	{
@@ -49,8 +49,8 @@ export const COMMUNITIES: Model.Community[] = [
 			de: 'Eine globale Gemeinschaft, die daran arbeitet, ein gerechteres und nachhaltigeres Lebensmittelsystem durch Open-Source-Technologie und Zusammenarbeit zu schaffen.'
 		},
 		url: 'https://openfoodnetwork.org',
-		valors: [
-			{
+		valors: {
+			'1': {
 				id: '1',
 				name: { en: 'Sustainability', de: 'Nachhaltigkeit' },
 				description: {
@@ -59,7 +59,7 @@ export const COMMUNITIES: Model.Community[] = [
 				},
 				icon: '🌱'
 			}
-		],
+		},
 		tools: []
 	}
 ];

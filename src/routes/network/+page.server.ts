@@ -22,8 +22,8 @@ export const actions = {
 		const name = data.get('name')?.toString();
 		const description = data.get('description')?.toString();
 		const url = data.get('url')?.toString() ?? null;
-		const valors: Model.Valor[] = []; // TODO
-		const tools: Model.Tool[] = []; // TODO
+		const valors = JSON.parse(data.get('valors')?.toString() ?? '{}');
+		const tools = JSON.parse(data.get('tools')?.toString() ?? '{}');
 
 		if (!name || !description || !valors || !tools) {
 			return fail(400, { message: 'Missing required fields' });

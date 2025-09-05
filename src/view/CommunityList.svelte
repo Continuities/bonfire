@@ -8,6 +8,8 @@
 		fullWidth?: boolean;
 	};
 	let { communities, fullWidth }: Props = $props();
+
+	$effect(() => console.log(communities));
 </script>
 
 <DataTable style={fullWidth ? 'width: 100%' : undefined}>

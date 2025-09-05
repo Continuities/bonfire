@@ -13,7 +13,6 @@
 	const { valors, tools } = getStores();
 
 	let displayingValor = $state<Model.Valor | null>(null);
-	let valorList = $derived(Object.values($valors));
 </script>
 
 <PageTitle title={$_('the_openburn_project')} />
@@ -45,7 +44,7 @@
 				<Paper variant="outlined">
 					<Title>{$_('some_we_like')}</Title>
 					<Content>
-						<ValueList valors={valorList} onclick={(valor) => (displayingValor = valor)} />
+						<ValueList valors={$valors} onclick={(valor) => (displayingValor = valor)} />
 					</Content>
 				</Paper>
 			</Stack>

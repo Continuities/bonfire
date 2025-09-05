@@ -34,8 +34,8 @@ declare global {
 			name: I19n.LocaleText;
 			description: I19n.LocaleText;
 			url: string | null;
-			valors: Valor[];
-			tools: Tool[];
+			valors: Record<ValorId, Valor>;
+			tools: Record<ToolId, Tool>;
 		}
 	}
 
