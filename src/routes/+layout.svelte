@@ -4,16 +4,15 @@
 	import Footer from '@view/Footer.svelte';
 	import LanguageToggle from '@view/LanguageToggle.svelte';
 	import WIPOverlay from '@view/WIPOverlay.svelte';
-	import { setContext } from 'svelte';
 	import type { LayoutProps } from './$types';
 	import idstore from '$lib/id-store';
+	import { setStores } from '$lib/context';
 
 	let { children, data }: LayoutProps = $props();
 
 	const valorStore = idstore<Model.Valor>((data as { valors: Model.Valor[] })?.valors ?? []);
 	const toolStore = idstore<Model.Tool>((data as { tools: Model.Tool[] })?.tools ?? []);
-	setContext('valors', valorStore);
-	setContext('tools', toolStore);
+	setStores({ valors: valorStore, tools: toolStore });
 </script>
 
 <svelte:head>

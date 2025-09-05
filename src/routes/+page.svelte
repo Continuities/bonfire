@@ -7,12 +7,10 @@
 	import List, { Item, Text, PrimaryText, SecondaryText } from '@smui/list';
 	import Stack from '@view/Stack.svelte';
 	import { resolveText } from '$lib/i18n';
-	import { getContext } from 'svelte';
-	import type { IdStore } from '$lib/id-store';
+	import { getStores } from '$lib/context';
 
 	// These stores are added in +layout.svelte
-	const valors: IdStore<Model.Valor> = getContext('valors');
-	const tools: IdStore<Model.Tool> = getContext('tools');
+	const { valors, tools } = getStores();
 
 	let displayingValor = $state<Model.Valor | null>(null);
 	let valorList = $derived(Object.values($valors));
