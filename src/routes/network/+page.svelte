@@ -13,6 +13,14 @@
 
 <Paper>
 	<Content>
-		<CommunityList communities={$communities} fullWidth />
+		<div class="container">
+			<CommunityList communities={$communities} />
+		</div>
 	</Content>
 </Paper>
+
+<style>
+	.container {
+		display: flex;
+	}
+</style>

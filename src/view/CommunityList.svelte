@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolveText } from '$lib/i18n';
-	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+	import DataTable, { Body, Row, Cell } from '@smui/data-table';
 	import ValorList from '@view/ValorList.svelte';
 	import { locale } from 'svelte-i18n';
 	type Props = {
@@ -13,12 +13,37 @@
 <DataTable style={fullWidth ? 'width: 100%' : undefined}>
 	<Body>
 		{#each communities as community (community.id)}
-			<Row>
-				<Cell>{resolveText(community.name, $locale)}</Cell>
+			<Row style="height:auto;">
 				<Cell>
-					<ValorList valors={community.valors} />
+					<div class="community-cell">
+						<div class="community-info">
+							<div class="community-name">
+								{resolveText(community.name, $locale)}
+							</div>
+							<div class="community-description">
+								{resolveText(community.description, $locale)}
+							</div>
+						</div>
+						<ValorList valors={community.valors} />
+					</div>
 				</Cell>
 			</Row>
 		{/each}
 	</Body>
 </DataTable>
+
+<style>
+	.community-cell {
+		display: flex;
+		flex-direction: column;
+		white-space: normal;
+		gap: 1rem;
+		min-height: 100px;
+		padding: 1rem 0;
+	}
+	.community-name {
+		font-weight: bold;
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+	}
+</style>
