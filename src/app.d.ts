@@ -10,17 +10,29 @@ declare global {
 	}
 
 	namespace Model {
+		type ValorId = string;
+		type Emoji = string;
 		interface Valor {
-			id: string;
+			id: ValorId;
 			name: I19n.LocaleText;
 			description: I19n.LocaleText;
-			icon?: string;
+			icon?: Emoji;
 		}
+		type ToolId = string;
 		interface Tool {
-			id: string;
+			id: ToolId;
 			name: I19n.LocaleText;
 			description: I19n.LocaleText;
 			url: string;
+		}
+		type CommunityId = string;
+		interface Community {
+			id: CommunityId;
+			name: I19n.LocaleText;
+			description: I19n.LocaleText;
+			url: string;
+			valors: Valor[];
+			tools: Tool[];
 		}
 	}
 

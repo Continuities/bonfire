@@ -36,11 +36,12 @@
 		<Content>
 			<Stack>
 				<p>{@html $_('communal_values_description')}</p>
-				<ValueList
-					title={$_('some_we_like')}
-					valors={$valors}
-					onclick={(valor) => (displayingValor = valor)}
-				></ValueList>
+				<Paper variant="outlined">
+					<Title>{$_('some_we_like')}</Title>
+					<Content>
+						<ValueList valors={$valors} onclick={(valor) => (displayingValor = valor)} />
+					</Content>
+				</Paper>
 			</Stack>
 		</Content>
 	</Paper>
