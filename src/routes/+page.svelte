@@ -6,9 +6,13 @@
 	import ValorDialog from '@view/ValorDialog.svelte';
 	import List, { Item, Text, PrimaryText, SecondaryText } from '@smui/list';
 	import Stack from '@view/Stack.svelte';
-	import valors from '$lib/valor-store';
-	import tools from '$lib/tool-store';
 	import { resolveText } from '$lib/i18n';
+	import { getContext } from 'svelte';
+	import type { Writable } from 'svelte/store';
+
+	// These stores are added in +layout.svelte
+	const valors: Writable<Model.Valor[]> = getContext('valors');
+	const tools: Writable<Model.Tool[]> = getContext('tools');
 
 	let displayingValor = $state<Model.Valor | null>(null);
 </script>

@@ -20,6 +20,11 @@
 							<div class="community-name">
 								{resolveText(community.name, $locale)}
 							</div>
+							<div class="community-url">
+								<a href={community.url} target="_blank" rel="noopener">
+									{community.url}
+								</a>
+							</div>
 							<div class="community-description">
 								{resolveText(community.description, $locale)}
 							</div>
@@ -44,6 +49,11 @@
 	.community-name {
 		font-weight: bold;
 		font-size: 1.5rem;
-		margin-bottom: 1rem;
+	}
+	.community-url {
+		margin-top: 0.3rem;
+	}
+	.community-description {
+		margin-top: 1rem;
 	}
 </style>
