@@ -12,6 +12,9 @@ declare global {
 	namespace Model {
 		type ValorId = string;
 		type Emoji = string;
+		interface WithId {
+			id: string;
+		}
 		interface Valor {
 			id: ValorId;
 			name: I19n.LocaleText;

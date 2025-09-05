@@ -6,12 +6,12 @@
 	import WIPOverlay from '@view/WIPOverlay.svelte';
 	import { setContext } from 'svelte';
 	import type { LayoutProps } from './$types';
-	import { writable } from 'svelte/store';
+	import idstore from '$lib/id-store';
 
 	let { children, data }: LayoutProps = $props();
 
-	const valorStore = writable<Model.Valor[]>((data as { valors: Model.Valor[] })?.valors ?? []);
-	const toolStore = writable<Model.Tool[]>((data as { tools: Model.Tool[] })?.tools ?? []);
+	const valorStore = idstore<Model.Valor>((data as { valors: Model.Valor[] })?.valors ?? []);
+	const toolStore = idstore<Model.Tool>((data as { tools: Model.Tool[] })?.tools ?? []);
 	setContext('valors', valorStore);
 	setContext('tools', toolStore);
 </script>
