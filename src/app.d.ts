@@ -33,7 +33,7 @@ declare global {
 			id: CommunityId;
 			name: I19n.LocaleText;
 			description: I19n.LocaleText;
-			url: string;
+			url: string | null;
 			valors: Valor[];
 			tools: Tool[];
 		}
