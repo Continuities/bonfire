@@ -11,19 +11,14 @@
 	import Fab from '@smui/fab';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import ValorList from '@view/ValorList.svelte';
-	import { v4 as uuid } from 'uuid';
+	import ValorPickerDialog from '@view/ValorPickerDialog.svelte';
 
+	let addValorDialogOpen = $state<boolean>(false);
 	let chosenValors = $state<Record<Model.ValorId, Model.Valor>>({});
 
 	const addValorClicked: MouseEventHandler<HTMLButtonElement> = (e) => {
-		console.log('[TODO] Add Valor Dialog');
+		addValorDialogOpen = true;
 		e.preventDefault();
-		const newValor: Model.Valor = {
-			id: uuid(),
-			name: 'NEW_VALOR',
-			description: 'NEW_VALOR_DESCRIPTION'
-		};
-		chosenValors[newValor.id] = newValor;
 		return false;
 	};
 </script>
@@ -65,6 +60,16 @@
 		<Button type="submit" variant="raised">{$_('register_community')}</Button>
 	</Stack>
 </form>
+
+{#if addValorDialogOpen}
+	<ValorPickerDialog
+		bind:open={addValorDialogOpen}
+		onSubmit={(valor) => {
+			chosenValors = { ...chosenValors, [valor.id]: valor };
+			addValorDialogOpen = false;
+		}}
+	/>
+{/if}
 
 <style>
 	.register-form {
