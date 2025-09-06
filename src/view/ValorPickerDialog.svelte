@@ -15,7 +15,7 @@
 	let currentValor = $state<Model.Valor | undefined>(undefined);
 
 	const onAddClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-		if (!currentValor) {
+		if (!currentValor?.id || !currentValor?.name || !currentValor?.description) {
 			e.stopPropagation();
 			return false;
 		}
@@ -23,13 +23,15 @@
 	};
 </script>
 
-<Dialog bind:open surface$style="width: 850px; max-width: calc(100vw - 32px);">
+<Dialog bind:open surface$style="width: 850px; max-width: calc(100vw - 32px);overflow:visible;">
 	<Title>{$_('add_a_valor')}</Title>
-	<Content style="min-width: 300px;">
-		<ValorPicker bind:value={currentValor} />
-	</Content>
-	<Actions>
-		<Button>{$_('cancel')}</Button>
-		<Button variant="raised" color="primary" onclick={onAddClick}>{$_('add')}</Button>
-	</Actions>
+	<form>
+		<Content style="min-width: 300px;overflow:visible;">
+			<ValorPicker bind:value={currentValor} />
+		</Content>
+		<Actions>
+			<Button>{$_('cancel')}</Button>
+			<Button variant="raised" color="primary" onclick={onAddClick}>{$_('add')}</Button>
+		</Actions>
+	</form>
 </Dialog>

@@ -23,7 +23,7 @@
 
 	let options = $state(Object.values($valors));
 	$effect(() => {
-		if (currentValor && description && description !== currentValor.description) {
+		if (currentValor && description !== currentValor.description) {
 			value = {
 				...currentValor,
 				description: description
@@ -38,6 +38,7 @@
 		<Autocomplete
 			bind:value={currentValor}
 			bind:text
+			textfield$required
 			style="width: 100%;"
 			textfield$style="width: 100%;"
 			{options}
@@ -60,6 +61,7 @@
 		</Autocomplete>
 		<Textfield
 			bind:value={description}
+			required
 			style="width: 100%;"
 			helperLine$style="width: 100%;"
 			input$rows={6}
