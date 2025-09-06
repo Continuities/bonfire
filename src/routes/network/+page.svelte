@@ -14,7 +14,7 @@
 <Paper>
 	<Content>
 		<div class="container">
-			<CommunityList communities={$communities} />
+			<CommunityList communities={$communities} fullWidth />
 		</div>
 	</Content>
 </Paper>

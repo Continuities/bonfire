@@ -12,12 +12,20 @@
 	import type { MouseEventHandler } from 'svelte/elements';
 	import ValorList from '@view/ValorList.svelte';
 	import ValorPickerDialog from '@view/ValorPickerDialog.svelte';
+	import ToolsList from '@view/ToolsList.svelte';
 
 	let addValorDialogOpen = $state<boolean>(false);
 	let chosenValors = $state<Record<Model.ValorId, Model.Valor>>({});
+	let chosenTools = $state<Record<Model.ToolId, Model.Tool>>({});
 
 	const addValorClicked: MouseEventHandler<HTMLButtonElement> = (e) => {
 		addValorDialogOpen = true;
+		e.preventDefault();
+		return false;
+	};
+
+	const addToolClicked: MouseEventHandler<HTMLButtonElement> = (e) => {
+		// TODO
 		e.preventDefault();
 		return false;
 	};
@@ -51,6 +59,19 @@
 				<ValorList valors={chosenValors} name="valors" />
 				<div class="centered">
 					<Fab color="secondary" onclick={addValorClicked}>
+						<SvgIcon path={mdiPlus} />
+					</Fab>
+				</div>
+			</Content>
+		</Paper>
+
+		<Paper>
+			<Title>{$_('tools')}</Title>
+			<Content>
+				<p>{@html $_('tools_description')}</p>
+				<ToolsList tools={chosenTools} name="tools" />
+				<div class="centered">
+					<Fab color="secondary" onclick={addToolClicked}>
 						<SvgIcon path={mdiPlus} />
 					</Fab>
 				</div>
