@@ -1,11 +1,15 @@
+/**
+ * In-memory store for Communities. Very temporary.
+ * @since 2025-09-06
+ * @author Michael Townsend <@continuities>
+ */
+
 import { COMMUNITIES } from '$lib/mock-data';
 
 export const getCommunities = async (): Promise<Model.Community[]> => {
-	// Hardcoded for now, but attach to a database later
 	return COMMUNITIES;
 };
 
 export const addCommunity = async (community: Model.Community): Promise<void> => {
-	// Yup, I'm modifying this in place!
 	COMMUNITIES.push(community);
 };

@@ -1,5 +1,8 @@
 import type { PageServerLoad } from './$types';
 import { addCommunity, getCommunities } from '$lib/service/community-service';
+import { addMissingTools } from '$lib/service/tool-service';
+import { addMissingValors } from '$lib/service/valor-service';
+
 import { v4 as uuid } from 'uuid';
 import { fail } from '@sveltejs/kit';
 
@@ -22,8 +25,12 @@ export const actions = {
 		const name = data.get('name')?.toString();
 		const description = data.get('description')?.toString();
 		const url = data.get('url')?.toString() ?? null;
-		const valors = JSON.parse(data.get('valors')?.toString() ?? '{}');
-		const tools = JSON.parse(data.get('tools')?.toString() ?? '{}');
+		const valors: Record<Model.ValorId, Model.Valor> = JSON.parse(
+			data.get('valors')?.toString() ?? '{}'
+		);
+		const tools: Record<Model.ToolId, Model.Tool> = JSON.parse(
+			data.get('tools')?.toString() ?? '{}'
+		);
 
 		if (!name || !description || !valors || !tools) {
 			return fail(400, { message: 'Missing required fields' });
@@ -39,5 +46,9 @@ export const actions = {
 		};
 
 		await addCommunity(community);
+		await addMissingValors(Object.values(valors));
+		await addMissingTools(Object.values(tools));
+
+		return { success: true };
 	}
 };
