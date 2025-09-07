@@ -26,5 +26,11 @@
   "add_a_valor": "Champion a Value",
   "add_valor_dialog_content": "Pick a value that your community shares, and tell us what it means to you.",
   "valor": "What's the value?",
-  "valor_description": "What does it mean to your community?"
+  "valor_description": "What does it mean to your community?",
+  "add_a_tool": "Share a Tool",
+  "add_tool_dialog_content": "Share a tool that your community uses. If we don't know about it, give us the details!",
+  "tool": "What's the tool?",
+  "tool_url": "Where on the web can we find it?",
+  "tool_description": "What does it do?",
+  "tools_description": "If you use any software tools to help you achieve community goals, please share them here. The OpenBurn Network is most useful as a comprehensive library of useful tools."
 }

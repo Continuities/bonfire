@@ -12,7 +12,7 @@
 		value?: Model.Valor | undefined;
 	};
 
-	let { value = $bindable() } = $props();
+	let { value = $bindable() }: Props = $props();
 
 	let { valors } = getStores();
 	let currentValor = $state<Model.Valor | undefined>();

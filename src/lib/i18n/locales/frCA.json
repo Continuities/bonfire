@@ -26,5 +26,11 @@
   "add_a_valor": "Défendre une Valeur",
   "add_valor_dialog_content": "Choisissez une valeur que votre communauté partage, et dites-nous ce qu'elle signifie pour vous.",
   "valor": "Quelle est la valeur?",
-  "valor_description": "Que signifie-t-elle pour votre communauté?"
+  "valor_description": "Que signifie-t-elle pour votre communauté?",
+  "add_a_tool": "Partager un Outil",
+  "add_tool_dialog_content": "Partagez un outil que votre communauté utilise. Si nous ne le connaissons pas, donnez-nous les détails!",
+  "tool": "Quel est l'outil?",
+  "tool_url": "Où sur le web pouvons-nous le trouver?",
+  "tool_description": "Que fait-il?",
+  "tools_description": "Si vous utilisez des outils logiciels pour aider à atteindre les objectifs de la communauté, veuillez les partager ici. L'un des objectifs du Réseau OpenBurn est de construire une bibliothèque complète d'outils utiles."
 }

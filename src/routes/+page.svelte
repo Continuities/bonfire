@@ -8,6 +8,7 @@
 	import Stack from '@view/Stack.svelte';
 	import { resolveText } from '$lib/i18n';
 	import { getStores } from '$lib/context';
+	import ToolsList from '@view/ToolsList.svelte';
 
 	// These stores are added in +layout.svelte
 	const { valors, tools } = getStores();
@@ -55,19 +56,7 @@
 		<Title>{$_('tools')}</Title>
 		<Content>
 			<p>{@html $_('tools_content')}</p>
-			<List nonInteractive threeLine>
-				{#each Object.values($tools) as tool (tool.id)}
-					<Item>
-						<Text>
-							<PrimaryText
-								><a href={tool.url} target="_blank">{resolveText(tool.name, $locale)}</a
-								></PrimaryText
-							>
-							<SecondaryText>{resolveText(tool.description, $locale)}</SecondaryText>
-						</Text>
-					</Item>
-				{/each}
-			</List>
+			<ToolsList tools={$tools} />
 		</Content>
 	</Paper>
 

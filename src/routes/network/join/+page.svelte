@@ -13,8 +13,10 @@
 	import ValorList from '@view/ValorList.svelte';
 	import ValorPickerDialog from '@view/ValorPickerDialog.svelte';
 	import ToolsList from '@view/ToolsList.svelte';
+	import ToolPickerDialog from '@view/ToolPickerDialog.svelte';
 
 	let addValorDialogOpen = $state<boolean>(false);
+	let addToolDialogOpen = $state<boolean>(false);
 	let chosenValors = $state<Record<Model.ValorId, Model.Valor>>({});
 	let chosenTools = $state<Record<Model.ToolId, Model.Tool>>({});
 
@@ -25,7 +27,7 @@
 	};
 
 	const addToolClicked: MouseEventHandler<HTMLButtonElement> = (e) => {
-		// TODO
+		addToolDialogOpen = true;
 		e.preventDefault();
 		return false;
 	};
@@ -88,6 +90,17 @@
 		onSubmit={(valor) => {
 			chosenValors = { ...chosenValors, [valor.id]: valor };
 			addValorDialogOpen = false;
+		}}
+	/>
+{/if}
+
+{#if addToolDialogOpen}
+	<ToolPickerDialog
+		bind:open={addToolDialogOpen}
+		onSubmit={(tool) => {
+			console.log(tool);
+			chosenTools = { ...chosenTools, [tool.id]: tool };
+			addToolDialogOpen = false;
 		}}
 	/>
 {/if}
