@@ -1,12 +1,10 @@
 <script lang="ts">
-	import { _, locale } from 'svelte-i18n';
+	import { _ } from 'svelte-i18n';
 	import Paper, { Title, Content } from '@smui/paper';
 	import PageTitle from '@view/PageTitle.svelte';
 	import ValueList from '@view/ValorList.svelte';
 	import ValorDialog from '@view/ValorDialog.svelte';
-	import List, { Item, Text, PrimaryText, SecondaryText } from '@smui/list';
 	import Stack from '@view/Stack.svelte';
-	import { resolveText } from '$lib/i18n';
 	import { getStores } from '$lib/context';
 	import ToolsList from '@view/ToolsList.svelte';
 
@@ -56,7 +54,7 @@
 		<Title>{$_('tools')}</Title>
 		<Content>
 			<p>{@html $_('tools_content')}</p>
-			<ToolsList tools={$tools} />
+			<ToolsList tools={$tools} fullWidth />
 		</Content>
 	</Paper>
 
