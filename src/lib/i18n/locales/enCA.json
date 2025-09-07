@@ -33,5 +33,6 @@
   "tool_url": "Where on the web can we find it?",
   "tool_description": "What does it do?",
   "tools_description": "If you use any software tools to help you achieve community goals, please share them here. The OpenBurn Network is most useful as a comprehensive library of useful tools.",
-  "used_by_count": "Used by {count, plural, one {1 community} other {# communities}}"
+  "used_by_count": "Used by {count, plural, one {1 community} other {# communities}}",
+  "what_kind_of_tool": "What kind of tool is it?"
 }

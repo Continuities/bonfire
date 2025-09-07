@@ -7,12 +7,16 @@
 	import type { LayoutProps } from './$types';
 	import idstore from '$lib/id-store';
 	import { setStores } from '$lib/context';
+	import { writable } from 'svelte/store';
 
 	let { children, data }: LayoutProps = $props();
 
 	const valorStore = idstore<Model.Valor>((data as { valors: Model.Valor[] })?.valors ?? []);
 	const toolStore = idstore<Model.Tool>((data as { tools: Model.Tool[] })?.tools ?? []);
-	setStores({ valors: valorStore, tools: toolStore });
+	const toolTypeStore = writable<Record<Model.ToolTypeId, Model.ToolType>>(
+		(data as { toolTypes: Record<Model.ToolTypeId, Model.ToolType> })?.toolTypes ?? {}
+	);
+	setStores({ valors: valorStore, tools: toolStore, toolTypes: toolTypeStore });
 </script>
 
 <svelte:head>

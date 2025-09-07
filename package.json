@@ -23,6 +23,7 @@
 		"@material/typography": "^14.0.0",
 		"@mdi/js": "^7.4.47",
 		"@smui-extra/autocomplete": "^8.0.3",
+		"@smui-extra/chip-input": "^8.0.3",
 		"@smui/button": "^8.0.3",
 		"@smui/chips": "^8.0.3",
 		"@smui/data-table": "^8.0.3",

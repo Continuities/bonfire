@@ -7,6 +7,8 @@
 	import { Text } from '@smui/list';
 	import Textfield from '@smui/textfield';
 	import { v4 as uuid } from 'uuid';
+	import ToolTypeList from './ToolTypeList.svelte';
+	import ToolTypePicker from './ToolTypePicker.svelte';
 
 	type Props = {
 		value?: Model.Tool | undefined;
@@ -14,7 +16,7 @@
 
 	let { value = $bindable() }: Props = $props();
 
-	let { tools } = getStores();
+	let { tools, toolTypes } = getStores();
 	let currentTool = $state<Model.Tool | undefined>();
 	let text = $state('');
 	let url = $derived(currentTool?.url ?? '');
@@ -35,6 +37,14 @@
 			newValue.url = url;
 		}
 		value = newValue;
+	});
+
+	let pickedType = $state<Model.ToolType | undefined>();
+	$effect(() => {
+		if (pickedType && currentTool) {
+			currentTool.types[pickedType.id] = pickedType;
+			pickedType = undefined;
+		}
 	});
 </script>
 
@@ -74,6 +84,12 @@
 			helperLine$style="width: 100%;"
 			disabled={!currentTool}
 			label={$_('tool_url')}
+		/>
+		<ToolTypeList toolTypes={currentTool?.types ?? {}} />
+		<ToolTypePicker
+			bind:value={pickedType}
+			disabled={!currentTool}
+			options={Object.values($toolTypes)}
 		/>
 		<Textfield
 			bind:value={description}

@@ -4,10 +4,14 @@
  * @author Michael Townsend <@continuities>
  */
 
-import { TOOLS } from '$lib/mock-data';
+import { TOOLS, TOOL_TYPES } from '$lib/mock-data';
 
 export const getTools = async (): Promise<Model.Tool[]> => {
 	return TOOLS;
+};
+
+export const getToolTypes = async (): Promise<Record<Model.ToolTypeId, Model.ToolType>> => {
+	return TOOL_TYPES;
 };
 
 export const addMissingTools = async (tools: Model.Tool[]): Promise<void> => {
