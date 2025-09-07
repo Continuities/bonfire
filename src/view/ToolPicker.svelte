@@ -55,7 +55,8 @@
 					id: uuid(),
 					name: text,
 					url: '',
-					description: ''
+					description: '',
+					types: {}
 				};
 				options = [...options, currentTool];
 			}}

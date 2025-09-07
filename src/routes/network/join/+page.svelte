@@ -20,6 +20,9 @@
 	let chosenValors = $state<Record<Model.ValorId, Model.Valor>>({});
 	let chosenTools = $state<Record<Model.ToolId, Model.Tool>>({});
 
+	let hasValors = $derived(Object.keys(chosenValors).length > 0);
+	let hasTools = $derived(Object.keys(chosenTools).length > 0);
+
 	const addValorClicked: MouseEventHandler<HTMLButtonElement> = (e) => {
 		addValorDialogOpen = true;
 		e.preventDefault();
@@ -57,26 +60,34 @@
 		<Paper>
 			<Title>{$_('communal_values')}</Title>
 			<Content>
-				<p>{@html $_('communal_values_description')}</p>
-				<ValorList valors={chosenValors} name="valors" />
-				<div class="centered">
-					<Fab color="secondary" onclick={addValorClicked}>
-						<SvgIcon path={mdiPlus} />
-					</Fab>
-				</div>
+				<Stack>
+					<p>{@html $_('communal_values_description')}</p>
+					{#if hasValors}
+						<ValorList valors={chosenValors} name="valors" />
+					{/if}
+					<div class="centered">
+						<Fab color="secondary" onclick={addValorClicked}>
+							<SvgIcon path={mdiPlus} />
+						</Fab>
+					</div>
+				</Stack>
 			</Content>
 		</Paper>
 
 		<Paper>
 			<Title>{$_('tools')}</Title>
 			<Content>
-				<p>{@html $_('tools_description')}</p>
-				<ToolsList tools={chosenTools} name="tools" />
-				<div class="centered">
-					<Fab color="secondary" onclick={addToolClicked}>
-						<SvgIcon path={mdiPlus} />
-					</Fab>
-				</div>
+				<Stack>
+					<p>{@html $_('tools_description')}</p>
+					{#if hasTools}
+						<ToolsList tools={chosenTools} name="tools" fullWidth />
+					{/if}
+					<div class="centered">
+						<Fab color="secondary" onclick={addToolClicked}>
+							<SvgIcon path={mdiPlus} />
+						</Fab>
+					</div>
+				</Stack>
 			</Content>
 		</Paper>
 
@@ -115,5 +126,8 @@
 	.centered {
 		display: flex;
 		justify-content: center;
+	}
+	p {
+		margin: 0;
 	}
 </style>

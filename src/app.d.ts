@@ -30,6 +30,7 @@ declare global {
 			description: I19n.LocaleText;
 			url: string;
 			types: Record<ToolTypeId, ToolType>;
+			used_by?: CommunityId[];
 		}
 		interface ToolType {
 			id: ToolTypeId;

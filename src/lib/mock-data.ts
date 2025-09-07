@@ -170,6 +170,7 @@ export const TOOLS: Model.Tool[] = [
 			fr: "Cobudget est une plateforme open source pour la budgétisation collaborative et la prise de décision. Elle permet aux communautés d'allouer des fonds de manière collective et transparente."
 		},
 		url: 'https://www.cobudget.com/',
+		used_by: ['theborderland'],
 		types: {
 			budgeting: TOOL_TYPES.budgeting,
 			opensource: TOOL_TYPES.opensource

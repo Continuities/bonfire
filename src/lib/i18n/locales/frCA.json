@@ -32,5 +32,6 @@
   "tool": "Quel est l'outil?",
   "tool_url": "Où sur le web pouvons-nous le trouver?",
   "tool_description": "Que fait-il?",
-  "tools_description": "Si vous utilisez des outils logiciels pour aider à atteindre les objectifs de la communauté, veuillez les partager ici. L'un des objectifs du Réseau OpenBurn est de construire une bibliothèque complète d'outils utiles."
+  "tools_description": "Si vous utilisez des outils logiciels pour aider à atteindre les objectifs de la communauté, veuillez les partager ici. L'un des objectifs du Réseau OpenBurn est de construire une bibliothèque complète d'outils utiles.",
+  "used_by_count": "Utilisé par {count, plural, one {1 communauté} other {# communautés}}"
 }

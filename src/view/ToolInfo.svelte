@@ -1,0 +1,48 @@
+<script lang="ts">
+	import { resolveText } from '$lib/i18n';
+	import { _, locale } from 'svelte-i18n';
+	import ToolTypeList from './ToolTypeList.svelte';
+	import Stack from './Stack.svelte';
+
+	type Props = {
+		tool: Model.Tool;
+	};
+	let { tool }: Props = $props();
+
+	let usageCount = $derived((tool.used_by ?? []).length);
+</script>
+
+<div class="tool-cell">
+	<Stack gap={0.3}>
+		<div class="tool-name">
+			{resolveText(tool.name, $locale)}
+		</div>
+		<a href={tool.url} target="_blank" rel="noopener">
+			{tool.url}
+		</a>
+	</Stack>
+	{#if usageCount > 0}
+		<div class="tool-uses">
+			{$_('used_by_count', { values: { count: usageCount } })}
+		</div>
+	{/if}
+	<ToolTypeList toolTypes={tool.types} />
+	<div class="tool-description">
+		{resolveText(tool.description, $locale)}
+	</div>
+</div>
+
+<style>
+	.tool-cell {
+		display: flex;
+		flex-direction: column;
+		white-space: normal;
+		gap: 1rem;
+		min-height: 100px;
+		padding: 1rem 0;
+	}
+	.tool-name {
+		font-weight: bold;
+		font-size: 1.5rem;
+	}
+</style>
