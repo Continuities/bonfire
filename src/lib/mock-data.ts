@@ -171,8 +171,8 @@ export const TOOLS: Model.Tool[] = [
 		},
 		url: 'https://www.cobudget.com/',
 		types: {
-			opensource: TOOL_TYPES.opensource,
-			budgeting: TOOL_TYPES.budgeting
+			budgeting: TOOL_TYPES.budgeting,
+			opensource: TOOL_TYPES.opensource
 		}
 	},
 	{
@@ -184,8 +184,8 @@ export const TOOLS: Model.Tool[] = [
 		},
 		url: 'https://pretix.eu/',
 		types: {
-			opensource: TOOL_TYPES.opensource,
-			ticketing: TOOL_TYPES.ticketing
+			ticketing: TOOL_TYPES.ticketing,
+			opensource: TOOL_TYPES.opensource
 		}
 	},
 	{
@@ -197,8 +197,8 @@ export const TOOLS: Model.Tool[] = [
 		},
 		url: 'https://github.com/Flashpoint-Artists-Initiative/Volunteering',
 		types: {
-			opensource: TOOL_TYPES.opensource,
-			volunteer_management: TOOL_TYPES.volunteer_management
+			volunteer_management: TOOL_TYPES.volunteer_management,
+			opensource: TOOL_TYPES.opensource
 		}
 	},
 	{
@@ -210,8 +210,8 @@ export const TOOLS: Model.Tool[] = [
 		},
 		url: 'https://github.com/opencollective/opencollective',
 		types: {
-			opensource: TOOL_TYPES.opensource,
-			budgeting: TOOL_TYPES.budgeting
+			budgeting: TOOL_TYPES.budgeting,
+			opensource: TOOL_TYPES.opensource
 		}
 	},
 	{
@@ -223,8 +223,8 @@ export const TOOLS: Model.Tool[] = [
 		},
 		url: 'https://github.com/Leaflet/Leaflet',
 		types: {
-			opensource: TOOL_TYPES.opensource,
-			mapping: TOOL_TYPES.mapping
+			mapping: TOOL_TYPES.mapping,
+			opensource: TOOL_TYPES.opensource
 		}
 	},
 	{
@@ -236,8 +236,8 @@ export const TOOLS: Model.Tool[] = [
 		},
 		url: 'https://github.com/loomio/loomio',
 		types: {
-			opensource: TOOL_TYPES.opensource,
-			democracy: TOOL_TYPES.democracy
+			democracy: TOOL_TYPES.democracy,
+			opensource: TOOL_TYPES.opensource
 		}
 	}
 ];
