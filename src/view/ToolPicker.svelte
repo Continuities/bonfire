@@ -21,6 +21,7 @@
 	let text = $state('');
 	let url = $derived(currentTool?.url ?? '');
 	let description = $derived((currentTool && resolveText(currentTool.description, $locale)) ?? '');
+	let currentTypes = $derived(currentTool?.types ?? {});
 
 	let options = $state(Object.values($tools));
 	$effect(() => {
@@ -85,9 +86,8 @@
 			disabled={!currentTool}
 			label={$_('tool_url')}
 		/>
-		<ToolTypeList toolTypes={currentTool?.types ?? {}} />
 		<ToolTypePicker
-			bind:value={pickedType}
+			bind:value={currentTypes}
 			disabled={!currentTool}
 			options={Object.values($toolTypes)}
 		/>
