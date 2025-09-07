@@ -90,6 +90,15 @@ export const VALORS: Model.Valor[] = [
 			fr: "Nous encourageons l'engagement proactif et la poursuite de nouvelles idées et projets qui bénéficient à notre communauté."
 		},
 		icon: '🚀'
+	},
+	{
+		id: 'accountability',
+		name: { en: 'Accountability', fr: 'Responsabilité' },
+		description: {
+			en: 'We hold ourselves and each other responsible for our actions and their impact on the community.',
+			fr: 'Nous nous tenons responsables, nous-mêmes et les autres, de nos actions et de leur impact sur la communauté.'
+		},
+		icon: '📝'
 	}
 ];
 
