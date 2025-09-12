@@ -17,6 +17,10 @@
 		"build:theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
 		"deploy": "npm run build && gcloud app deploy --project openburn-471023 --version staging --no-promote build/app.yaml"
 	},
+	"dependencies": {
+		"@supabase/ssr": "^0.7.0",
+		"@supabase/supabase-js": "^2.57.4"
+	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
