@@ -34,5 +34,13 @@
   "tool_description": "Que fait-il?",
   "tools_description": "Si vous utilisez des outils logiciels pour aider à atteindre les objectifs de la communauté, veuillez les partager ici. L'un des objectifs du Réseau OpenBurn est de construire une bibliothèque complète d'outils utiles.",
   "used_by_count": "Utilisé par {count, plural, one {1 communauté} other {# communautés}}",
-  "what_kind_of_tool": "Quel genre d'outil est-ce?"
+  "what_kind_of_tool": "Quel genre d'outil est-ce?",
+  "login_or_signup": "Connexion ou Inscription",
+  "enter_credentials": "Entrez vos identifiants",
+  "email": "Email",
+  "password": "Mot de passe",
+  "log_in": "Connexion",
+  "sign_up": "Inscription",
+  "login_error": "Erreur de connexion",
+  "login_error_content": "Une erreur est survenue lors de la connexion. Veuillez vérifier votre email et mot de passe, puis réessayer."
 }
