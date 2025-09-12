@@ -8,8 +8,11 @@
 	import idstore from '$lib/id-store';
 	import { setStores } from '$lib/context';
 	import { writable } from 'svelte/store';
+	import { onMount } from 'svelte';
+	import { invalidate } from '$app/navigation';
 
 	let { children, data }: LayoutProps = $props();
+	let { session, supabase } = $derived(data);
 
 	const valorStore = idstore<Model.Valor>((data as { valors: Model.Valor[] })?.valors ?? []);
 	const toolStore = idstore<Model.Tool>((data as { tools: Model.Tool[] })?.tools ?? []);
@@ -17,6 +20,13 @@
 		(data as { toolTypes: Record<Model.ToolTypeId, Model.ToolType> })?.toolTypes ?? {}
 	);
 	setStores({ valors: valorStore, tools: toolStore, toolTypes: toolTypeStore });
+
+	onMount(() => {
+		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
+			invalidate('supabase:auth');
+		});
+		return () => data.subscription.unsubscribe();
+	});
 </script>
 
 <svelte:head>
