@@ -9,7 +9,8 @@
 	import { setStores } from '$lib/context';
 	import { writable } from 'svelte/store';
 	import { onMount } from 'svelte';
-	import { invalidate } from '$app/navigation';
+	import { invalidate, goto } from '$app/navigation';
+	import AccountWidget from '@view/AccountWidget.svelte';
 
 	let { children, data }: LayoutProps = $props();
 	let { session, supabase } = $derived(data);
@@ -22,11 +23,18 @@
 	setStores({ valors: valorStore, tools: toolStore, toolTypes: toolTypeStore });
 
 	onMount(() => {
-		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
+		const { data } = supabase.auth.onAuthStateChange(() => {
 			invalidate('supabase:auth');
 		});
 		return () => data.subscription.unsubscribe();
 	});
+
+	const logout = async () => {
+		await supabase.auth.signOut();
+	};
+	const login = async () => {
+		goto('/auth');
+	};
 </script>
 
 <svelte:head>
@@ -52,6 +60,7 @@
 </svelte:head>
 
 <div class="top-right">
+	<AccountWidget {session} {login} {logout} />
 	<LanguageToggle />
 </div>
 
