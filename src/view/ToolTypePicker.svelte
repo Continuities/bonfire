@@ -36,7 +36,6 @@
 
 	const handleChipInputRemove = (event: CustomEvent<{ chip: Model.ToolType }>) => {
 		event.preventDefault();
-		console.log(event.detail.chip.id);
 		delete value[event.detail.chip.id];
 	};
 

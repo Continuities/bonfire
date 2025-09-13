@@ -4,8 +4,10 @@ import { locale, waitLocale } from 'svelte-i18n';
 import type { LayoutLoad } from './$types';
 import { createBrowserClient, createServerClient } from '@supabase/ssr';
 import { PUBLIC_SUPABASE_PUBLISHABLE_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
+import { doesPathRequireAuth, LOGIN_PATH } from '$lib/routes';
+import { redirect } from '@sveltejs/kit';
 
-export const load: LayoutLoad = async ({ data, depends }) => {
+export const load: LayoutLoad = async ({ url, data, depends }) => {
 	if (browser) {
 		const defaultLang = window.navigator.language;
 		const urlLang = new URLSearchParams(window.location.search).get('lang');
@@ -48,6 +50,13 @@ export const load: LayoutLoad = async ({ data, depends }) => {
 	const {
 		data: { user }
 	} = await supabase.auth.getUser();
+
+	if (!user && doesPathRequireAuth(url.pathname)) {
+		const authPath = new URL(LOGIN_PATH);
+		authPath.searchParams.set('redirect', url.pathname);
+		redirect(303, authPath);
+	}
+
 	return {
 		session,
 		supabase,

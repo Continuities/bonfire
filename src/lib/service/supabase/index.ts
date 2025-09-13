@@ -8,6 +8,7 @@
 import { createServerClient } from '@supabase/ssr';
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_PUBLISHABLE_KEY } from '$env/static/public';
 import { redirect, type Handle } from '@sveltejs/kit';
+import { doesPathRequireAuth, LOGIN_PATH } from '$lib/routes';
 
 const supabase: Handle = async ({ event, resolve }) => {
 	/**
@@ -72,10 +73,10 @@ const authGuard: Handle = async ({ event, resolve }) => {
 	const { session, user } = await event.locals.safeGetSession();
 	event.locals.session = session;
 	event.locals.user = user;
-	if (!event.locals.session && event.url.pathname.startsWith('/private')) {
+	if (!event.locals.session && doesPathRequireAuth(event.url.pathname)) {
 		redirect(303, '/auth');
 	}
-	if (event.locals.session && event.url.pathname === '/auth') {
+	if (event.locals.session && event.url.pathname === LOGIN_PATH) {
 		redirect(303, '/private');
 	}
 

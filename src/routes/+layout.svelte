@@ -23,7 +23,7 @@
 	setStores({ valors: valorStore, tools: toolStore, toolTypes: toolTypeStore });
 
 	onMount(() => {
-		const { data } = supabase.auth.onAuthStateChange(() => {
+		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
 			invalidate('supabase:auth');
 		});
 		return () => data.subscription.unsubscribe();
