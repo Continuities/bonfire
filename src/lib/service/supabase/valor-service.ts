@@ -22,12 +22,13 @@ const addValor = async (valor: Model.Valor): Promise<void> => {
 
 const ValorService: Service.ServiceConstructor<Service.ValorService> = ({ supabase }) => ({
 	getValors: async () => {
-		const { data } = (await supabase?.from('valor').select(`
-			id,
-			name,
-			description,
-			icon
-		`)) ?? { data: null };
+		if (!supabase) {
+			return [];
+		}
+		const { data, error } = await supabase.from('valor').select();
+		if (error) {
+			console.error('Error fetching valors:', error);
+		}
 		const valors =
 			data?.map<Model.Valor>((d) => ({
 				id: d.id,
@@ -39,10 +40,14 @@ const ValorService: Service.ServiceConstructor<Service.ValorService> = ({ supaba
 		const valorIds = valors.map((v) => v.id);
 		const valorsById = new Map(valors.map((v) => [v.id, v]));
 		const i18nkeys = valorIds.flatMap((id) => [`valor.name.${id}`, `valor.description.${id}`]);
-		const { data: i18nvals } = (await supabase
-			?.from('localisations')
+		const { data: i18nvals, error: i18nerror } = (await supabase
+			?.from('localisation')
 			.select('*')
 			.in('id', i18nkeys)) ?? { data: null };
+
+		if (i18nerror) {
+			console.error('Error fetching valor i18n:', i18nerror);
+		}
 
 		i18nvals?.forEach(({ id, locale_key, text }) => {
 			const [, field, valorId] = id.split('.');
