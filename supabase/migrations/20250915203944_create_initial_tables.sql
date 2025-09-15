@@ -1,21 +1,18 @@
 create table if not exists localisation (
-    id serial primary key,
+    id varchar(100) not null,
     locale_key varchar(10) not null,
-    text varchar(1000) not null
+    text varchar(1000) not null,
+    primary key (id, locale_key)
 );
 
 create table if not exists tool_type (
     id serial primary key,
     icon varchar(1),
-    name integer not null references localisation(id),
-    description integer not null references localisation(id),
     created_at timestamp with time zone default current_timestamp
 );
 
 create table if not exists tool (
     id serial primary key,
-    name integer not null references localisation(id),
-    description integer not null references localisation(id),
     url varchar(500),
     tool_types int[],
     created_at timestamp with time zone default current_timestamp
@@ -30,15 +27,11 @@ create table if not exists tool_types_for_tool (
 create table if not exists valor (
     id serial primary key,
     icon varchar(1),
-    name integer not null references localisation(id),
-    description integer not null references localisation(id),
     created_at timestamp with time zone default current_timestamp
 );
 
 create table if not exists community (
     id serial primary key,
-    name integer not null references localisation(id),
-    description integer not null references localisation(id),
     url varchar(500),
     valors int[],
     tools int[],
