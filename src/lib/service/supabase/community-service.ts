@@ -4,4 +4,16 @@
  * @author Michael Townsend <@continuities>
  */
 
-export { addCommunity, getCommunities } from './memory/community-service';
+import { COMMUNITIES } from '$lib/mock-data';
+
+const CommunityService: Service.ServiceConstructor<Service.CommunityService> = () => ({
+	getCommunities: async () => {
+		return COMMUNITIES;
+	},
+
+	addCommunity: async (community: Model.Community) => {
+		COMMUNITIES.push(community);
+	}
+});
+
+export default CommunityService;

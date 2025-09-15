@@ -1,10 +1,8 @@
-import { getTools, getToolTypes } from '$lib/service/tool-service';
-import { getValors } from '$lib/service/valor-service';
 import type { Session } from '@supabase/supabase-js';
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({
-	locals: { safeGetSession },
+	locals: { safeGetSession, services },
 	cookies
 }): Promise<{
 	valors: Model.Valor[];
@@ -14,9 +12,9 @@ export const load: LayoutServerLoad = async ({
 	cookies: { name: string; value: string }[];
 }> => {
 	const [valors, tools, toolTypes, session] = await Promise.all([
-		getValors(),
-		getTools(),
-		getToolTypes(),
+		services.valor.getValors(),
+		services.tool.getTools(),
+		services.tool.getToolTypes(),
 
 		// The following is from https://supabase.com/docs/guides/auth/server-side/sveltekit
 		(await safeGetSession()).session

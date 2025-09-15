@@ -6,15 +6,15 @@
 
 import { TOOLS, TOOL_TYPES } from '$lib/mock-data';
 
-export const getTools = async (): Promise<Model.Tool[]> => {
+const getTools = async (): Promise<Model.Tool[]> => {
 	return TOOLS;
 };
 
-export const getToolTypes = async (): Promise<Record<Model.ToolTypeId, Model.ToolType>> => {
+const getToolTypes = async (): Promise<Record<Model.ToolTypeId, Model.ToolType>> => {
 	return TOOL_TYPES;
 };
 
-export const addMissingTools = async (tools: Model.Tool[]): Promise<void> => {
+const addMissingTools = async (tools: Model.Tool[]): Promise<void> => {
 	const existingToolIds = new Set(TOOLS.map((t) => t.id));
 	for (const tool of tools) {
 		if (!existingToolIds.has(tool.id)) {
@@ -24,6 +24,15 @@ export const addMissingTools = async (tools: Model.Tool[]): Promise<void> => {
 	}
 };
 
-export const addTool = async (tool: Model.Tool): Promise<void> => {
+const addTool = async (tool: Model.Tool): Promise<void> => {
 	TOOLS.push(tool);
 };
+
+const ToolService: Service.ServiceConstructor<Service.ToolService> = () => ({
+	getTools,
+	getToolTypes,
+	addMissingTools,
+	addTool
+});
+
+export default ToolService;

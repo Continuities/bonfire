@@ -1,17 +1,16 @@
 import type { PageServerLoad } from './$types';
-import { addCommunity, getCommunities } from '$lib/service/community-service';
-import { addMissingTools } from '$lib/service/tool-service';
-import { addMissingValors } from '$lib/service/valor-service';
 
 import { v4 as uuid } from 'uuid';
 import { fail } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async (): Promise<{ communities: Model.Community[] }> => ({
-	communities: await getCommunities()
+export const load: PageServerLoad = async ({
+	locals: { services }
+}): Promise<{ communities: Model.Community[] }> => ({
+	communities: await services.community.getCommunities()
 });
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, locals: { services } }) => {
 		const data = await request.formData();
 
 		const id = data.get('id')?.toString();
@@ -45,9 +44,9 @@ export const actions = {
 			tools
 		};
 
-		await addCommunity(community);
-		await addMissingValors(Object.values(valors));
-		await addMissingTools(Object.values(tools));
+		await services.community.addCommunity(community);
+		await services.valor.addMissingValors(Object.values(valors));
+		await services.tool.addMissingTools(Object.values(tools));
 
 		return { success: true };
 	}

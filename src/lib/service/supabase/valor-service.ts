@@ -4,4 +4,30 @@
  * @author Michael Townsend <@continuities>
  */
 
-export { getValors, addMissingValors, addValor } from './memory/valor-service';
+import { VALORS } from '$lib/mock-data';
+
+const getValors = async (): Promise<Model.Valor[]> => {
+	return VALORS;
+};
+
+const addMissingValors = async (valors: Model.Valor[]): Promise<void> => {
+	const existingValorIds = new Set(VALORS.map((t) => t.id));
+	for (const valor of valors) {
+		if (!existingValorIds.has(valor.id)) {
+			VALORS.push(valor);
+			existingValorIds.add(valor.id);
+		}
+	}
+};
+
+const addValor = async (valor: Model.Valor): Promise<void> => {
+	VALORS.push(valor);
+};
+
+const ValorService: Service.ServiceConstructor<Service.ValorService> = () => ({
+	getValors,
+	addMissingValors,
+	addValor
+});
+
+export default ValorService;

@@ -11,10 +11,34 @@ declare global {
 			safeGetSession: () => Promise<{ session: Session | null; user: User | null }>;
 			session?: Session | null;
 			user?: User | null;
+			services: {
+				tool: Service.ToolService;
+				valor: Service.ValorService;
+				community: Service.CommunityService;
+			};
 		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
+	}
+
+	namespace Service {
+		type ServiceConstructor<T> = (locals: App.Locals) => T;
+		interface ToolService {
+			getTools: () => Promise<Model.Tool[]>;
+			getToolTypes: () => Promise<Record<Model.ToolTypeId, Model.ToolType>>;
+			addMissingTools: (tools: Model.Tool[]) => Promise<void>;
+			addTool: (tool: Model.Tool) => Promise<void>;
+		}
+		interface ValorService {
+			getValors: () => Promise<Model.Valor[]>;
+			addMissingValors: (valors: Model.Valor[]) => Promise<void>;
+			addValor: (valor: Model.Valor) => Promise<void>;
+		}
+		interface CommunityService {
+			getCommunities: () => Promise<Model.Community[]>;
+			addCommunity: (community: Model.Community) => Promise<void>;
+		}
 	}
 
 	namespace Model {

@@ -6,10 +6,14 @@
 
 import { COMMUNITIES } from '$lib/mock-data';
 
-export const getCommunities = async (): Promise<Model.Community[]> => {
-	return COMMUNITIES;
-};
+const CommunityService: Service.ServiceConstructor<Service.CommunityService> = () => ({
+	getCommunities: async () => {
+		return COMMUNITIES;
+	},
 
-export const addCommunity = async (community: Model.Community): Promise<void> => {
-	COMMUNITIES.push(community);
-};
+	addCommunity: async (community: Model.Community) => {
+		COMMUNITIES.push(community);
+	}
+});
+
+export default CommunityService;

@@ -1,3 +1,4 @@
+import { ToolService, ValorService, CommunityService } from '$lib/service';
 import { middleware } from '$lib/service';
 import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
@@ -13,4 +14,13 @@ const initLanguage: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
-export const handle: Handle = sequence(initLanguage, ...middleware);
+const initServices: Handle = async ({ event, resolve }) => {
+	event.locals.services = {
+		valor: ValorService(event.locals),
+		tool: ToolService(event.locals),
+		community: CommunityService(event.locals)
+	};
+	return resolve(event);
+};
+
+export const handle: Handle = sequence(initLanguage, ...middleware, initServices);
