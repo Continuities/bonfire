@@ -54,13 +54,18 @@ const ValorService: Service.ServiceConstructor<Service.ValorService> = ({ supaba
 		if (!supabase) {
 			return;
 		}
-		const texts = valors.flatMap((valor) =>
-			Object.entries(valor.name).map(([locale_key, text]) => ({
+		const texts = valors.flatMap((valor) => [
+			...Object.entries(valor.name).map(([locale_key, text]) => ({
 				id: `valor.name.${valor.id}`,
 				locale_key,
 				text
+			})),
+			...Object.entries(valor.description).map(([locale_key, text]) => ({
+				id: `valor.description.${valor.id}`,
+				locale_key,
+				text
 			}))
-		);
+		]);
 		const valor_rows = valors.map((valor) => ({
 			id: valor.id,
 			icon: valor.icon

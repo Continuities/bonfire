@@ -25,7 +25,7 @@
 	let options = $state(Object.values($valors));
 	let localKey = $derived($locale ?? defaultLocale);
 	$effect(() => {
-		if (currentValor && description !== currentDescription) {
+		if (currentValor) {
 			value = {
 				...currentValor,
 				description: { ...currentValor.description, [localKey]: description }
