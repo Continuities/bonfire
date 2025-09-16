@@ -24,15 +24,10 @@ const addMissingTools = async (tools: Model.Tool[]): Promise<void> => {
 	}
 };
 
-const addTool = async (tool: Model.Tool): Promise<void> => {
-	TOOLS.push(tool);
-};
-
 const ToolService: Service.ServiceConstructor<Service.ToolService> = () => ({
 	getTools,
 	getToolTypes,
-	addMissingTools,
-	addTool
+	addMissingTools
 });
 
 export default ToolService;

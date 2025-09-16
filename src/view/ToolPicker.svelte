@@ -71,7 +71,7 @@
 				};
 				options = [...options, currentTool];
 			}}
-			getOptionLabel={(tool) => (tool && resolveText(tool.name, $locale)) ?? ''}
+			getOptionLabel={(tool) => tool.name ?? ''}
 			label={$_('tool')}
 		>
 			{#snippet noMatches()}

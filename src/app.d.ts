@@ -28,7 +28,6 @@ declare global {
 			getTools: () => Promise<Model.Tool[]>;
 			getToolTypes: () => Promise<Record<Model.ToolTypeId, Model.ToolType>>;
 			addMissingTools: (tools: Model.Tool[]) => Promise<void>;
-			addTool: (tool: Model.Tool) => Promise<void>;
 		}
 		interface ValorService {
 			getValors: () => Promise<Model.Valor[]>;
