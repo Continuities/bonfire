@@ -2,6 +2,8 @@ import type { PageServerLoad } from './$types';
 
 import { v4 as uuid } from 'uuid';
 import { fail } from '@sveltejs/kit';
+import { locale } from 'svelte-i18n';
+import { get } from 'svelte/store';
 
 export const load: PageServerLoad = async ({
 	locals: { services }
@@ -37,8 +39,8 @@ export const actions = {
 
 		const community: Model.Community = {
 			id: uuid(),
-			name,
-			description,
+			name: { [get(locale) ?? 'en']: name },
+			description: { [get(locale) ?? 'en']: description },
 			url,
 			valors,
 			tools

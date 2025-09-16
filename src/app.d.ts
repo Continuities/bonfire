@@ -33,12 +33,15 @@ declare global {
 		interface ValorService {
 			getValors: () => Promise<Model.Valor[]>;
 			addMissingValors: (valors: Model.Valor[]) => Promise<void>;
-			addValor: (valor: Model.Valor) => Promise<void>;
 		}
 		interface CommunityService {
 			getCommunities: () => Promise<Model.Community[]>;
 			addCommunity: (community: Model.Community) => Promise<void>;
 		}
+	}
+
+	namespace I18n {
+		type LocaleText = Record<string, string>;
 	}
 
 	namespace Model {
@@ -52,14 +55,14 @@ declare global {
 		}
 		interface Valor {
 			id: ValorId;
-			name: I19n.LocaleText;
-			description: I19n.LocaleText;
+			name: I18n.LocaleText;
+			description: I18n.LocaleText;
 			icon?: Emoji;
 		}
 		interface Tool {
 			id: ToolId;
-			name: I19n.LocaleText;
-			description: I19n.LocaleText;
+			name: I18n.LocaleText;
+			description: I18n.LocaleText;
 			url: string;
 			types: Record<ToolTypeId, ToolType>;
 			used_by?: CommunityId[];
@@ -67,13 +70,13 @@ declare global {
 		interface ToolType {
 			id: ToolTypeId;
 			icon?: Emoji;
-			name: I19n.LocaleText;
-			description: I19n.LocaleText;
+			name: I18n.LocaleText;
+			description: I18n.LocaleText;
 		}
 		interface Community {
 			id: CommunityId;
-			name: I19n.LocaleText;
-			description: I19n.LocaleText;
+			name: I18n.LocaleText;
+			description: I18n.LocaleText;
 			url: string | null;
 			valors: Record<ValorId, Valor>;
 			tools: Record<ToolId, Tool>;
@@ -91,10 +94,6 @@ declare global {
 			mx?: MarginValue;
 			my?: MarginValue;
 		}
-	}
-
-	namespace I18n {
-		type LocaleText = string | Record<string, string>;
 	}
 }
 

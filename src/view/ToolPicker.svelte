@@ -3,11 +3,10 @@
 	import { getStores } from '$lib/context';
 	import Stack from '@view/Stack.svelte';
 	import { _, locale } from 'svelte-i18n';
-	import { resolveText } from '$lib/i18n';
+	import { defaultLocale, resolveText } from '$lib/i18n';
 	import { Text } from '@smui/list';
 	import Textfield from '@smui/textfield';
 	import { v4 as uuid } from 'uuid';
-	import ToolTypeList from './ToolTypeList.svelte';
 	import ToolTypePicker from './ToolTypePicker.svelte';
 
 	type Props = {
@@ -22,6 +21,7 @@
 	let url = $derived(currentTool?.url ?? '');
 	let description = $derived((currentTool && resolveText(currentTool.description, $locale)) ?? '');
 	let currentTypes = $derived(currentTool?.types ?? {});
+	let localeKey = $derived($locale ?? defaultLocale);
 
 	let options = $state(Object.values($tools));
 	$effect(() => {
@@ -32,7 +32,7 @@
 		const urlChanged = url !== currentTool.url;
 		const newValue = { ...currentTool };
 		if (descriptionChanged) {
-			newValue.description = description;
+			newValue.description[localeKey] = description;
 		}
 		if (urlChanged) {
 			newValue.url = url;
@@ -64,9 +64,9 @@
 			onSMUIAutocompleteNoMatchesAction={() => {
 				currentTool = {
 					id: uuid(),
-					name: text,
+					name: { [localeKey]: text },
 					url: '',
-					description: '',
+					description: { [localeKey]: '' },
 					types: {}
 				};
 				options = [...options, currentTool];

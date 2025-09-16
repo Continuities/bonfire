@@ -4,22 +4,6 @@
  * @author Michael Townsend <@continuities>
  */
 
-import { VALORS } from '$lib/mock-data';
-
-const addMissingValors = async (valors: Model.Valor[]): Promise<void> => {
-	const existingValorIds = new Set(VALORS.map((t) => t.id));
-	for (const valor of valors) {
-		if (!existingValorIds.has(valor.id)) {
-			VALORS.push(valor);
-			existingValorIds.add(valor.id);
-		}
-	}
-};
-
-const addValor = async (valor: Model.Valor): Promise<void> => {
-	VALORS.push(valor);
-};
-
 const ValorService: Service.ServiceConstructor<Service.ValorService> = ({ supabase }) => ({
 	getValors: async () => {
 		if (!supabase) {
@@ -66,8 +50,26 @@ const ValorService: Service.ServiceConstructor<Service.ValorService> = ({ supaba
 		});
 		return valors;
 	},
-	addMissingValors,
-	addValor
+	addMissingValors: async (valors: Model.Valor[]) => {
+		if (!supabase) {
+			return;
+		}
+		const texts = valors.flatMap((valor) =>
+			Object.entries(valor.name).map(([locale_key, text]) => ({
+				id: `valor.name.${valor.id}`,
+				locale_key,
+				text
+			}))
+		);
+		const valor_rows = valors.map((valor) => ({
+			id: valor.id,
+			icon: valor.icon
+		}));
+		await supabase
+			.from('localisation')
+			.upsert(texts, { onConflict: 'id,locale_key', ignoreDuplicates: true });
+		await supabase.from('valor').upsert(valor_rows, { onConflict: 'id', ignoreDuplicates: true });
+	}
 });
 
 export default ValorService;

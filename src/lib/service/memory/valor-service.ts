@@ -20,14 +20,9 @@ const addMissingValors = async (valors: Model.Valor[]): Promise<void> => {
 	}
 };
 
-const addValor = async (valor: Model.Valor): Promise<void> => {
-	VALORS.push(valor);
-};
-
 const ValorService: Service.ServiceConstructor<Service.ValorService> = () => ({
 	getValors,
-	addMissingValors,
-	addValor
+	addMissingValors
 });
 
 export default ValorService;
