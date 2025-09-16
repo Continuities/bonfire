@@ -61,7 +61,7 @@ declare global {
 		}
 		interface Tool {
 			id: ToolId;
-			name: I18n.LocaleText;
+			name: string;
 			description: I18n.LocaleText;
 			url: string;
 			types: Record<ToolTypeId, ToolType>;

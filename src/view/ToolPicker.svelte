@@ -64,7 +64,7 @@
 			onSMUIAutocompleteNoMatchesAction={() => {
 				currentTool = {
 					id: uuid(),
-					name: { [localeKey]: text },
+					name: text,
 					url: '',
 					description: { [localeKey]: '' },
 					types: {}
