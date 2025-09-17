@@ -14,7 +14,8 @@ const ToolService: Service.ServiceConstructor<Service.ToolService> = ({ supabase
 			name,
 			description,
 			url,
-			tool_type (id, icon, name, description)
+			tool_type (id, icon, name, description),
+			used_by:community(id)
 			`);
 		if (filter.id) {
 			query = query.in('id', filter.id);
@@ -33,6 +34,7 @@ const ToolService: Service.ServiceConstructor<Service.ToolService> = ({ supabase
 				name: d.name,
 				description: d.description,
 				url: d.url,
+				used_by: d.used_by.map((c) => c.id),
 				types: Object.fromEntries(d.tool_type.map((t) => [t.id, t as Model.ToolType]))
 			})) ?? [];
 
