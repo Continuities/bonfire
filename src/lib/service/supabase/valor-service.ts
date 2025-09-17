@@ -13,6 +13,9 @@ const ValorService: Service.ServiceConstructor<Service.ValorService> = ({ supaba
 		if (filter.id) {
 			query = query.in('id', filter.id);
 		}
+		if (filter.limit) {
+			query = query.limit(filter.limit);
+		}
 		const { data, error } = await query;
 		if (error) {
 			console.error('Error fetching valors:', error);

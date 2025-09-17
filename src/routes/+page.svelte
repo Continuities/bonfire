@@ -7,11 +7,16 @@
 	import Stack from '@view/Stack.svelte';
 	import { getStores } from '$lib/context';
 	import ToolsList from '@view/ToolsList.svelte';
+	import CommunityList from '@view/CommunityList.svelte';
+	import Button from '@smui/button';
 
 	// These stores are added in +layout.svelte
 	const { valors, tools } = getStores();
 
+	let { data } = $props();
 	let displayingValor = $state<Model.Valor | null>(null);
+
+	$effect(() => console.log('Network communities:', data.network));
 </script>
 
 <PageTitle title={$_('the_openburn_project')} />
@@ -53,16 +58,22 @@
 	<Paper>
 		<Title>{$_('tools')}</Title>
 		<Content>
-			<p>{@html $_('tools_content')}</p>
-			<ToolsList tools={$tools} fullWidth />
+			<Stack>
+				<p>{@html $_('tools_content')}</p>
+				<ToolsList tools={$tools} fullWidth />
+				<Button style="align-self:flex-end" href="/tools">{$_('see_all')}</Button>
+			</Stack>
 		</Content>
 	</Paper>
 
 	<Paper>
 		<Title>{$_('network')}</Title>
 		<Content>
-			<p>{@html $_('network_content')}</p>
-			<p>{$_('check_back_later')}</p>
+			<Stack>
+				<p>{@html $_('network_content')}</p>
+				<CommunityList communities={data.network} fullWidth />
+				<Button style="align-self:flex-end" href="/network">{$_('see_all')}</Button>
+			</Stack>
 		</Content>
 	</Paper>
 </Stack>

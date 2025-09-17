@@ -13,9 +13,9 @@
   "tools": "Tools",
   "tools_content": "Whether your community runs DIY festivals in the woods or organises protests in the streets, having the right tools can make all the difference. Here are some that we've found useful. All of these tools are open source, and free to use, copy, and modify",
   "network": "The Bonfire Network",
-  "network_content": "We believe that communities are stronger when they are connected to other like-minded communities. The Bonfire Network will be a directory of communities and a shared library of resources built from collective experience.",
+  "network_content": "We believe that communities are stronger when they are connected to other like-minded communities. The Bonfire Network will be a directory of communities and a shared library of resources built from collective experience. Here are just a few of the communities that are already part of the network:",
   "check_back_later": "Check back later for updates.",
-  "community_network": "Community Network",
+  "community_network": "The Bonfire Network",
   "join_the_network": "Join the Network",
   "basic_info": "Basic Info",
   "basic_info_content": "The simple stuff",
@@ -43,5 +43,6 @@
   "log_out": "Logout",
   "sign_up": "Sign Up",
   "login_error": "Login error",
-  "login_error_content": "There was an error logging in. Please check your email and password and try again."
+  "login_error_content": "There was an error logging in. Please check your email and password and try again.",
+  "see_all": "See all"
 }

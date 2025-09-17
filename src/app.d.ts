@@ -85,12 +85,15 @@ declare global {
 	namespace Filter {
 		interface ValorFilter {
 			id?: Model.ValorId[];
+			limit?: number;
 		}
 		interface ToolFilter {
 			id?: Model.ToolId[];
+			limit?: number;
 		}
 		interface CommunityFilter {
 			id?: Model.CommunityId[];
+			limit?: number;
 		}
 	}
 
