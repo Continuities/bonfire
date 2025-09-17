@@ -5,11 +5,15 @@
  */
 
 const ValorService: Service.ServiceConstructor<Service.ValorService> = ({ supabase }) => ({
-	getValors: async () => {
+	getValors: async (filter = {}) => {
 		if (!supabase) {
 			return [];
 		}
-		const { data, error } = await supabase.from('valor').select();
+		let query = supabase.from('valor').select();
+		if (filter.id) {
+			query = query.in('id', filter.id);
+		}
+		const { data, error } = await query;
 		if (error) {
 			console.error('Error fetching valors:', error);
 		}

@@ -7,11 +7,15 @@
 import type { PostgrestSingleResponse } from '@supabase/supabase-js';
 
 const ToolService: Service.ServiceConstructor<Service.ToolService> = ({ supabase }) => ({
-	getTools: async () => {
+	getTools: async (filter = {}) => {
 		if (!supabase) {
 			return [];
 		}
-		const { data, error } = await supabase.from('tool').select();
+		let query = supabase.from('tool').select();
+		if (filter.id) {
+			query = query.in('id', filter.id);
+		}
+		const { data, error } = await query;
 		if (error) {
 			console.error('Error fetching tools:', error);
 		}

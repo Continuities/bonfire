@@ -39,7 +39,7 @@ export const actions = {
 
 		const community: Model.Community = {
 			id: uuid(),
-			name: { [get(locale) ?? 'en']: name },
+			name,
 			description: { [get(locale) ?? 'en']: description },
 			url,
 			valors,

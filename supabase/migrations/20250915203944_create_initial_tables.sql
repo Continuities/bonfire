@@ -34,6 +34,7 @@ create table if not exists valor (
 
 create table if not exists community (
     id text default extensions.uuid_generate_v4() primary key,
+    name varchar(100) not null,
     url varchar(500),
     created_at timestamp with time zone default current_timestamp
 );

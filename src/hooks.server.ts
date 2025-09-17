@@ -15,11 +15,10 @@ const initLanguage: Handle = async ({ event, resolve }) => {
 };
 
 const initServices: Handle = async ({ event, resolve }) => {
-	event.locals.services = {
-		valor: ValorService(event.locals),
-		tool: ToolService(event.locals),
-		community: CommunityService(event.locals)
-	};
+	event.locals.services = event.locals.services ?? {};
+	event.locals.services.valor = ValorService(event.locals);
+	event.locals.services.tool = ToolService(event.locals);
+	event.locals.services.community = CommunityService(event.locals);
 	return resolve(event);
 };
 

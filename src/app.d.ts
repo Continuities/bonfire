@@ -25,16 +25,16 @@ declare global {
 	namespace Service {
 		type ServiceConstructor<T> = (locals: App.Locals) => T;
 		interface ToolService {
-			getTools: () => Promise<Model.Tool[]>;
+			getTools: (filter?: Filter.ToolFilter) => Promise<Model.Tool[]>;
 			getToolTypes: () => Promise<Record<Model.ToolTypeId, Model.ToolType>>;
 			addMissingTools: (tools: Model.Tool[]) => Promise<void>;
 		}
 		interface ValorService {
-			getValors: () => Promise<Model.Valor[]>;
+			getValors: (filter?: Filter.ValorFilter) => Promise<Model.Valor[]>;
 			addMissingValors: (valors: Model.Valor[]) => Promise<void>;
 		}
 		interface CommunityService {
-			getCommunities: () => Promise<Model.Community[]>;
+			getCommunities: (filter?: Filter.CommunityFilter) => Promise<Model.Community[]>;
 			addCommunity: (community: Model.Community) => Promise<void>;
 		}
 	}
@@ -74,11 +74,23 @@ declare global {
 		}
 		interface Community {
 			id: CommunityId;
-			name: I18n.LocaleText;
+			name: string;
 			description: I18n.LocaleText;
 			url: string | null;
 			valors: Record<ValorId, Valor>;
 			tools: Record<ToolId, Tool>;
+		}
+	}
+
+	namespace Filter {
+		interface ValorFilter {
+			id?: Model.ValorId[];
+		}
+		interface ToolFilter {
+			id?: Model.ToolId[];
+		}
+		interface CommunityFilter {
+			id?: Model.CommunityId[];
 		}
 	}
 
