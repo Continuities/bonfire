@@ -1,4 +1,4 @@
-# OpenBurn
+# Project Bonfire
 
 A project for brand sovereignty in alternative communities
 
