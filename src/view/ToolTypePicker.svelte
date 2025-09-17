@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ChipInput from '@smui-extra/chip-input';
-	import { resolveText } from '$lib/i18n';
+	import { defaultLocale, resolveText } from '$lib/i18n';
 	import { _, locale } from 'svelte-i18n';
 	import { v4 as uuid } from 'uuid';
 	import { Text } from '@smui/list';
@@ -16,13 +16,14 @@
 	let _options = $state(options);
 
 	let chips = $derived(Object.values(value));
+	let localeKey = $derived($locale ?? defaultLocale);
 
 	const handleChipInputEntry = (event: CustomEvent<{ text: string }>) => {
 		event.preventDefault();
 		const newType: Model.ToolType = {
 			id: uuid(),
-			name: text,
-			description: ''
+			name: { [localeKey]: text },
+			description: { [localeKey]: '' }
 		};
 		value[newType.id] = newType;
 		text = '';
@@ -36,7 +37,6 @@
 
 	const handleChipInputRemove = (event: CustomEvent<{ chip: Model.ToolType }>) => {
 		event.preventDefault();
-		console.log(event.detail.chip.id);
 		delete value[event.detail.chip.id];
 	};
 

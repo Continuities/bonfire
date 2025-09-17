@@ -34,5 +34,14 @@
   "tool_description": "What does it do?",
   "tools_description": "If you use any software tools to help you achieve community goals, please share them here. The OpenBurn Network is most useful as a comprehensive library of useful tools.",
   "used_by_count": "Used by {count, plural, one {1 community} other {# communities}}",
-  "what_kind_of_tool": "What kind of tool is it?"
+  "what_kind_of_tool": "What kind of tool is it?",
+  "login_or_signup": "Login or Signup",
+  "enter_credentials": "Enter your credentials",
+  "email": "Email",
+  "password": "Password",
+  "log_in": "Login",
+  "log_out": "Logout",
+  "sign_up": "Sign Up",
+  "login_error": "Login error",
+  "login_error_content": "There was an error logging in. Please check your email and password and try again."
 }

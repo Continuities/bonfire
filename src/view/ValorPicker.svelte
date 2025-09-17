@@ -3,7 +3,7 @@
 	import { getStores } from '$lib/context';
 	import Stack from '@view/Stack.svelte';
 	import { _, locale } from 'svelte-i18n';
-	import { resolveText } from '$lib/i18n';
+	import { defaultLocale, resolveText } from '$lib/i18n';
 	import { Text } from '@smui/list';
 	import Textfield from '@smui/textfield';
 	import { v4 as uuid } from 'uuid';
@@ -17,16 +17,18 @@
 	let { valors } = getStores();
 	let currentValor = $state<Model.Valor | undefined>();
 	let text = $state('');
-	let description = $derived(
+	let currentDescription = $derived(
 		(currentValor && resolveText(currentValor.description, $locale)) ?? ''
 	);
+	let description = $derived(currentDescription);
 
 	let options = $state(Object.values($valors));
+	let localKey = $derived($locale ?? defaultLocale);
 	$effect(() => {
-		if (currentValor && description !== currentValor.description) {
+		if (currentValor) {
 			value = {
 				...currentValor,
-				description: description
+				description: { ...currentValor.description, [localKey]: description }
 			};
 		}
 	});
@@ -47,8 +49,8 @@
 			onSMUIAutocompleteNoMatchesAction={() => {
 				currentValor = {
 					id: uuid(),
-					name: text,
-					description: ''
+					name: { [localKey]: text },
+					description: { [localKey]: '' }
 				};
 				options = [...options, currentValor];
 			}}

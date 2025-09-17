@@ -1,12 +1,46 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
+
+import type { SupabaseClient, Session, User } from '@supabase/supabase-js';
+
 // for information about these interfaces
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			supabase?: SupabaseClient;
+			safeGetSession: () => Promise<{ session: Session | null; user: User | null }>;
+			session?: Session | null;
+			user?: User | null;
+			services: {
+				tool: Service.ToolService;
+				valor: Service.ValorService;
+				community: Service.CommunityService;
+			};
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
+	}
+
+	namespace Service {
+		type ServiceConstructor<T> = (locals: App.Locals) => T;
+		interface ToolService {
+			getTools: (filter?: Filter.ToolFilter) => Promise<Model.Tool[]>;
+			getToolTypes: () => Promise<Record<Model.ToolTypeId, Model.ToolType>>;
+			addMissingTools: (tools: Model.Tool[]) => Promise<void>;
+		}
+		interface ValorService {
+			getValors: (filter?: Filter.ValorFilter) => Promise<Model.Valor[]>;
+			addMissingValors: (valors: Model.Valor[]) => Promise<void>;
+		}
+		interface CommunityService {
+			getCommunities: (filter?: Filter.CommunityFilter) => Promise<Model.Community[]>;
+			addCommunity: (community: Model.Community) => Promise<void>;
+		}
+	}
+
+	namespace I18n {
+		type LocaleText = Record<string, string>;
 	}
 
 	namespace Model {
@@ -20,14 +54,14 @@ declare global {
 		}
 		interface Valor {
 			id: ValorId;
-			name: I19n.LocaleText;
-			description: I19n.LocaleText;
+			name: I18n.LocaleText;
+			description: I18n.LocaleText;
 			icon?: Emoji;
 		}
 		interface Tool {
 			id: ToolId;
-			name: I19n.LocaleText;
-			description: I19n.LocaleText;
+			name: string;
+			description: I18n.LocaleText;
 			url: string;
 			types: Record<ToolTypeId, ToolType>;
 			used_by?: CommunityId[];
@@ -35,16 +69,28 @@ declare global {
 		interface ToolType {
 			id: ToolTypeId;
 			icon?: Emoji;
-			name: I19n.LocaleText;
-			description: I19n.LocaleText;
+			name: I18n.LocaleText;
+			description: I18n.LocaleText;
 		}
 		interface Community {
 			id: CommunityId;
-			name: I19n.LocaleText;
-			description: I19n.LocaleText;
+			name: string;
+			description: I18n.LocaleText;
 			url: string | null;
 			valors: Record<ValorId, Valor>;
 			tools: Record<ToolId, Tool>;
+		}
+	}
+
+	namespace Filter {
+		interface ValorFilter {
+			id?: Model.ValorId[];
+		}
+		interface ToolFilter {
+			id?: Model.ToolId[];
+		}
+		interface CommunityFilter {
+			id?: Model.CommunityId[];
 		}
 	}
 
@@ -59,10 +105,6 @@ declare global {
 			mx?: MarginValue;
 			my?: MarginValue;
 		}
-	}
-
-	namespace I18n {
-		type LocaleText = string | Record<string, string>;
 	}
 }
 

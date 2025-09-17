@@ -1,7 +1,10 @@
+import { ToolService, ValorService, CommunityService } from '$lib/service';
+import { middleware } from '$lib/service';
 import type { Handle } from '@sveltejs/kit';
+import { sequence } from '@sveltejs/kit/hooks';
 import { locale } from 'svelte-i18n';
 
-export const handle: Handle = async ({ event, resolve }) => {
+const initLanguage: Handle = async ({ event, resolve }) => {
 	const headerLang = event.request.headers.get('accept-language')?.split(',')[0];
 	const urlLang = event.url.searchParams.get('lang');
 	const lang = urlLang ?? headerLang;
@@ -10,3 +13,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 	return resolve(event);
 };
+
+const initServices: Handle = async ({ event, resolve }) => {
+	event.locals.services = event.locals.services ?? {};
+	event.locals.services.valor = ValorService(event.locals);
+	event.locals.services.tool = ToolService(event.locals);
+	event.locals.services.community = CommunityService(event.locals);
+	return resolve(event);
+};
+
+export const handle: Handle = sequence(initLanguage, ...middleware, initServices);

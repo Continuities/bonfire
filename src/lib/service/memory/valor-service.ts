@@ -6,11 +6,11 @@
 
 import { VALORS } from '$lib/mock-data';
 
-export const getValors = async (): Promise<Model.Valor[]> => {
+const getValors = async (): Promise<Model.Valor[]> => {
 	return VALORS;
 };
 
-export const addMissingValors = async (valors: Model.Valor[]): Promise<void> => {
+const addMissingValors = async (valors: Model.Valor[]): Promise<void> => {
 	const existingValorIds = new Set(VALORS.map((t) => t.id));
 	for (const valor of valors) {
 		if (!existingValorIds.has(valor.id)) {
@@ -20,6 +20,9 @@ export const addMissingValors = async (valors: Model.Valor[]): Promise<void> => 
 	}
 };
 
-export const addValor = async (valor: Model.Valor): Promise<void> => {
-	VALORS.push(valor);
-};
+const ValorService: Service.ServiceConstructor<Service.ValorService> = () => ({
+	getValors,
+	addMissingValors
+});
+
+export default ValorService;

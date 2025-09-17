@@ -109,7 +109,6 @@
 	<ToolPickerDialog
 		bind:open={addToolDialogOpen}
 		onSubmit={(tool) => {
-			console.log(tool);
 			chosenTools = { ...chosenTools, [tool.id]: tool };
 			addToolDialogOpen = false;
 		}}

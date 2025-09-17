@@ -18,7 +18,7 @@
 					<div class="community-cell">
 						<div class="community-info">
 							<div class="community-name">
-								{resolveText(community.name, $locale)}
+								{community.name}
 							</div>
 							<div class="community-url">
 								<a href={community.url} target="_blank" rel="noopener">

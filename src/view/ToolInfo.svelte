@@ -15,7 +15,7 @@
 <div class="tool-cell">
 	<Stack gap={0.3}>
 		<div class="tool-name">
-			{resolveText(tool.name, $locale)}
+			{tool.name}
 		</div>
 		<a href={tool.url} target="_blank" rel="noopener">
 			{tool.url}
