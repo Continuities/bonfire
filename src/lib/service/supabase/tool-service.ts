@@ -28,7 +28,7 @@ const ToolService: Service.ServiceConstructor<Service.ToolService> = ({ supabase
 				name: d.name,
 				description: {},
 				url: d.url,
-				types: {} // TODO
+				types: {}
 			})) ?? [];
 
 		const toolIds = tools.map((t) => t.id);

@@ -15,8 +15,6 @@
 
 	let { data } = $props();
 	let displayingValor = $state<Model.Valor | null>(null);
-
-	$effect(() => console.log('Network communities:', data.network));
 </script>
 
 <PageTitle title={$_('the_openburn_project')} />

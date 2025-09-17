@@ -44,5 +44,6 @@
   "sign_up": "Sign Up",
   "login_error": "Login error",
   "login_error_content": "There was an error logging in. Please check your email and password and try again.",
-  "see_all": "See all"
+  "see_all": "See all",
+  "no_one_yet": "No one yet..."
 }

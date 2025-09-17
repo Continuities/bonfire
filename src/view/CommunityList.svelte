@@ -2,7 +2,7 @@
 	import { resolveText } from '$lib/i18n';
 	import DataTable, { Body, Row, Cell } from '@smui/data-table';
 	import ValorList from '@view/ValorList.svelte';
-	import { locale } from 'svelte-i18n';
+	import { _, locale } from 'svelte-i18n';
 	type Props = {
 		communities: Model.Community[];
 		fullWidth?: boolean;
@@ -12,28 +12,36 @@
 
 <DataTable style={fullWidth ? 'width: 100%' : undefined}>
 	<Body>
-		{#each communities as community (community.id)}
-			<Row style="height:auto;">
+		{#if communities.length === 0}
+			<Row>
 				<Cell>
-					<div class="community-cell">
-						<div class="community-info">
-							<div class="community-name">
-								{community.name}
-							</div>
-							<div class="community-url">
-								<a href={community.url} target="_blank" rel="noopener">
-									{community.url}
-								</a>
-							</div>
-							<div class="community-description">
-								{resolveText(community.description, $locale)}
-							</div>
-						</div>
-						<ValorList valors={community.valors} />
-					</div>
+					<div class="empty">{$_('no_one_yet')}</div>
 				</Cell>
 			</Row>
-		{/each}
+		{:else}
+			{#each communities as community (community.id)}
+				<Row style="height:auto;">
+					<Cell>
+						<div class="community-cell">
+							<div class="community-info">
+								<div class="community-name">
+									{community.name}
+								</div>
+								<div class="community-url">
+									<a href={community.url} target="_blank" rel="noopener">
+										{community.url}
+									</a>
+								</div>
+								<div class="community-description">
+									{resolveText(community.description, $locale)}
+								</div>
+							</div>
+							<ValorList valors={community.valors} />
+						</div>
+					</Cell>
+				</Row>
+			{/each}
+		{/if}
 	</Body>
 </DataTable>
 
@@ -55,5 +63,10 @@
 	}
 	.community-description {
 		margin-top: 1rem;
+	}
+	.empty {
+		text-align: center;
+		padding: 2rem;
+		font-style: italic;
 	}
 </style>
