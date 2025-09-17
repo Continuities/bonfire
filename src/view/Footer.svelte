@@ -6,7 +6,7 @@
 
 <footer class="footer mdc-elevation--z24">
 	<p class="license">{@html $_('license')}</p>
-	<a href="https://github.com/Continuities/openburn" target="_blank" class="github"
+	<a href="https://github.com/Continuities/bonfire" target="_blank" class="github"
 		><SvgIcon path={mdiGithub} /></a
 	>
 </footer>
