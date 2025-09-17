@@ -1,22 +1,18 @@
 create extension if not exists "uuid-ossp";
 
-create table if not exists localisation (
-    id text not null,
-    locale_key text not null,
-    text text not null,
-    primary key (id, locale_key)
-);
-
 create table if not exists tool_type (
     id text default extensions.uuid_generate_v4() primary key,
-    icon varchar(1),
+    icon text,
+    name json not null,
+    description json not null default '{}',
     created_at timestamp with time zone default current_timestamp
 );
 
 create table if not exists tool (
     id text default extensions.uuid_generate_v4() primary key,
-    name text,
+    name text not null,
     url text,
+    description json not null default '{}',
     created_at timestamp with time zone default current_timestamp
 );
 
@@ -28,7 +24,9 @@ create table if not exists tool_types_for_tool (
 
 create table if not exists valor (
     id text default extensions.uuid_generate_v4() primary key,
-    icon varchar(1),
+    icon text,
+    name json not null,
+    description json not null default '{}',
     created_at timestamp with time zone default current_timestamp
 );
 
@@ -36,6 +34,7 @@ create table if not exists community (
     id text default extensions.uuid_generate_v4() primary key,
     name varchar(100) not null,
     url varchar(500),
+    description  json not null default '{}',
     created_at timestamp with time zone default current_timestamp
 );
 

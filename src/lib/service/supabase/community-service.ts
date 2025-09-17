@@ -16,6 +16,7 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			id,
 			name,
 			url,
+			description,
 			valor (id),
 			tool (id)
 		`);
@@ -37,7 +38,7 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 				return {
 					id: d.id,
 					name: d.name,
-					description: {},
+					description: d.description,
 					url: d.url,
 					valors: Object.fromEntries(valors.map((v) => [v.id, v])),
 					tools: Object.fromEntries(tools.map((t) => [t.id, t]))
@@ -45,30 +46,6 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			}) ?? []
 		);
 
-		const communityIds = communities.map((c) => c.id);
-		const communitiesById = new Map(communities.map((c) => [c.id, c]));
-		const i18nkeys = communityIds.map((id) => `community.description.${id}`);
-		const { data: i18nvals, error: i18nerror } = (await supabase
-			?.from('localisation')
-			.select('*')
-			.in('id', i18nkeys)) ?? { data: null };
-
-		if (i18nerror) {
-			console.error('Error fetching community i18n:', i18nerror);
-		}
-
-		i18nvals?.forEach(({ id, locale_key, text }) => {
-			const [, field, communityId] = id.split('.');
-			const community = communitiesById.get(communityId);
-			if (!community) {
-				return;
-			}
-			switch (field) {
-				case 'description':
-					community.description[locale_key] = text;
-					break;
-			}
-		});
 		return communities;
 	},
 
@@ -79,21 +56,14 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 		await services.valor.addMissingValors(Object.values(community.valors));
 		await services.tool.addMissingTools(Object.values(community.tools));
 
-		const i18n_rows = Object.entries(community.description).map(([locale_key, text]) => ({
-			id: `community.description.${community.id}`,
-			locale_key,
-			text
-		}));
 		const community_rows = [
 			{
 				id: community.id,
 				name: community.name,
-				url: community.url
+				url: community.url,
+				description: community.description
 			}
 		];
-		await supabase
-			.from('localisation')
-			.upsert(i18n_rows, { onConflict: 'id,locale_key', ignoreDuplicates: true });
 		await supabase
 			.from('community')
 			.upsert(community_rows, { onConflict: 'id', ignoreDuplicates: true });
