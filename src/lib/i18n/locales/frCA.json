@@ -35,7 +35,7 @@
   "tools_description": "Si vous utilisez des outils logiciels pour aider à atteindre les objectifs de la communauté, veuillez les partager ici. L'un des objectifs du Réseau Bonfire est de construire une bibliothèque complète d'outils utiles.",
   "used_by_count": "Utilisé par {count, plural, one {1 communauté} other {# communautés}}",
   "what_kind_of_tool": "Quel genre d'outil est-ce?",
-  "login_or_signup": "Connexion ou Inscription",
+  "login_or_signup": "Connexion",
   "enter_credentials": "Entrez vos identifiants",
   "email": "Email",
   "password": "Mot de passe",
@@ -46,5 +46,7 @@
   "login_error_content": "Une erreur est survenue lors de la connexion. Veuillez vérifier votre email et mot de passe, puis réessayer.",
   "see_all": "Voir tout",
   "no_one_yet": "Personne pour l'instant...",
-  "communities_using": "Communautés utilisant {tool}"
+  "communities_using": "Communautés utilisant {tool}",
+  "footer_content": "Pour plus d'informations ou pour rejoindre le Réseau Bonfire, contactez-nous à <a href=\"mailto:info@project-bonfire.org\" target=\"_blank\">info@project-bonfire.org</a>.",
+  "signup_disabled": "Le Réseau Bonfire n'est pas encore prêt pour le public. Pour plus d'informations ou pour rejoindre le Réseau, contactez-nous à <a href=\"mailto:info@project-bonfire.org\" target=\"_blank\">info@project-bonfire.org</a>."
 }

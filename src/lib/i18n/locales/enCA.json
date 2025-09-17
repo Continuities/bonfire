@@ -35,7 +35,7 @@
   "tools_description": "If you use any software tools to help you achieve community goals, please share them here. The Bonfire Network is most useful as a comprehensive library of useful tools.",
   "used_by_count": "Used by {count, plural, one {1 community} other {# communities}}",
   "what_kind_of_tool": "What kind of tool is it?",
-  "login_or_signup": "Login or Signup",
+  "login_or_signup": "Login",
   "enter_credentials": "Enter your credentials",
   "email": "Email",
   "password": "Password",
@@ -47,5 +47,7 @@
   "see_all": "See all",
   "no_one_yet": "No one yet...",
   "communities_using": "Communities using {tool}",
-  "communities_upholding": "Communities upholding {valor}"
+  "communities_upholding": "Communities upholding {valor}",
+  "footer_content": "For more information or to join the Bonfire Network, contact us at <a href=\"mailto:info@project-bonfire.org\">info@project-bonfire.org</a>.",
+  "signup_disabled": "The Bonfire Network isn't ready for the public just yet. For more information or to join the Network, contact us at <a href=\"mailto:info@project-bonfire.org\">info@project-bonfire.org</a>."
 }

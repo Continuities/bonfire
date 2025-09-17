@@ -5,6 +5,7 @@
 	import Textfield from '@smui/textfield';
 	import { _ } from 'svelte-i18n';
 	import Stack from '@view/Stack.svelte';
+	import { PUBLIC_SIGNUP_ENABLED } from '$env/static/public';
 </script>
 
 <PageTitle title={$_('login_or_signup')} />
@@ -12,10 +13,15 @@
 	<Title>{$_('enter_credentials')}</Title>
 	<Content tag="form" method="POST" action="?/login">
 		<Stack>
+			{#if PUBLIC_SIGNUP_ENABLED !== 'true'}
+				<p>{@html $_('signup_disabled')}</p>
+			{/if}
 			<Textfield input$name="email" type="email" label={$_('email')} value="" required />
 			<Textfield input$name="password" type="password" label={$_('password')} value="" required />
 			<Button type="submit" variant="raised">{$_('log_in')}</Button>
-			<Button type="submit" formaction="?/signup" variant="outlined">{$_('sign_up')}</Button>
+			{#if PUBLIC_SIGNUP_ENABLED === 'true'}
+				<Button type="submit" formaction="?/signup" variant="outlined">{$_('sign_up')}</Button>
+			{/if}
 		</Stack>
 	</Content>
 </Paper>
