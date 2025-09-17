@@ -22,9 +22,9 @@
 		</a>
 	</Stack>
 	{#if usageCount > 0}
-		<div class="tool-uses">
+		<a class="tool-uses" href={`/network/?uses_tool=${tool.id}`}>
 			{$_('used_by_count', { values: { count: usageCount } })}
-		</div>
+		</a>
 	{/if}
 	<ToolTypeList toolTypes={tool.types} />
 	<div class="tool-description">
@@ -44,5 +44,12 @@
 	.tool-name {
 		font-weight: bold;
 		font-size: 1.5rem;
+	}
+	.tool-uses {
+		color: inherit;
+		text-decoration: none;
+	}
+	.tool-uses:hover {
+		text-decoration: underline;
 	}
 </style>

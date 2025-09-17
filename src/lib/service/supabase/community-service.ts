@@ -18,10 +18,13 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			url,
 			description,
 			valor (id),
-			tool (id)
+			tool!inner (id)
 		`);
 		if (filter.id) {
 			query = query.in('id', filter.id);
+		}
+		if (filter.uses_tool) {
+			query = query.eq('tool.id', filter.uses_tool);
 		}
 		if (filter.limit) {
 			query = query.limit(filter.limit);

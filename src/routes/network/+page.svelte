@@ -1,7 +1,8 @@
 <script lang="ts">
-	import Paper, { Content } from '@smui/paper';
+	import Paper, { Content, Title } from '@smui/paper';
 	import CommunityList from '@view/CommunityList.svelte';
 	import PageTitle from '@view/PageTitle.svelte';
+	import Stack from '@view/Stack.svelte';
 	import { _ } from 'svelte-i18n';
 	import { writable } from 'svelte/store';
 
@@ -12,15 +13,12 @@
 <PageTitle title={$_('community_network')} />
 
 <Paper>
+	{#if data.tool}
+		<Title>{$_('communities_using', { values: { tool: data.tool.name } })}</Title>
+	{/if}
 	<Content>
-		<div class="container">
+		<Stack>
 			<CommunityList communities={$communities} fullWidth />
-		</div>
+		</Stack>
 	</Content>
 </Paper>
-
-<style>
-	.container {
-		display: flex;
-	}
-</style>

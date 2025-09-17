@@ -6,10 +6,19 @@ import { locale } from 'svelte-i18n';
 import { get } from 'svelte/store';
 
 export const load: PageServerLoad = async ({
+	url,
 	locals: { services }
-}): Promise<{ communities: Model.Community[] }> => ({
-	communities: await services.community.getCommunities()
-});
+}): Promise<{ communities: Model.Community[]; tool?: Model.Tool }> => {
+	const filter: Filter.CommunityFilter = {};
+	const uses_tool = url.searchParams.get('uses_tool');
+	if (uses_tool) {
+		filter.uses_tool = uses_tool;
+	}
+	return {
+		communities: await services.community.getCommunities(filter),
+		tool: uses_tool ? (await services.tool.getTools({ id: [uses_tool] }))[0] : undefined
+	};
+};
 
 export const actions = {
 	default: async ({ request, locals: { services } }) => {

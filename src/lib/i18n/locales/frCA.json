@@ -45,5 +45,6 @@
   "login_error": "Erreur de connexion",
   "login_error_content": "Une erreur est survenue lors de la connexion. Veuillez vérifier votre email et mot de passe, puis réessayer.",
   "see_all": "Voir tout",
-  "no_one_yet": "Personne pour l'instant..."
+  "no_one_yet": "Personne pour l'instant...",
+  "communities_using": "Communautés utilisant {tool}"
 }

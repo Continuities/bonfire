@@ -45,5 +45,6 @@
   "login_error": "Login error",
   "login_error_content": "There was an error logging in. Please check your email and password and try again.",
   "see_all": "See all",
-  "no_one_yet": "No one yet..."
+  "no_one_yet": "No one yet...",
+  "communities_using": "Communities using {tool}"
 }

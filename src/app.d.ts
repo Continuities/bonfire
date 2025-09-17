@@ -93,6 +93,7 @@ declare global {
 		}
 		interface CommunityFilter {
 			id?: Model.CommunityId[];
+			uses_tool?: Model.ToolId | null;
 			limit?: number;
 		}
 	}
