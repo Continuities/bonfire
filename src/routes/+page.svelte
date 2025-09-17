@@ -15,6 +15,18 @@
 
 	let { data } = $props();
 	let displayingValor = $state<Model.Valor | null>(null);
+	let communitiesForValor = $derived.by(async () => {
+		if (!displayingValor) {
+			return null;
+		}
+		console.log('fetching communities for valor', displayingValor.id);
+		const res = await fetch(`/api/network?with_valor=${displayingValor.id}`);
+		if (!res.ok) {
+			console.error('Failed to fetch communities for valor', displayingValor.id, res.statusText);
+			return [];
+		}
+		return (await res.json()) as Model.Community[];
+	});
 </script>
 
 <PageTitle title={$_('the_openburn_project')} />
@@ -76,7 +88,11 @@
 	</Paper>
 </Stack>
 
-<ValorDialog valor={displayingValor} onclose={() => (displayingValor = null)} />
+<ValorDialog
+	valor={displayingValor}
+	communities={communitiesForValor}
+	onclose={() => (displayingValor = null)}
+/>
 
 <style>
 </style>

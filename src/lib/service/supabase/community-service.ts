@@ -17,7 +17,7 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			name,
 			url,
 			description,
-			valor (id),
+			valor!inner (id),
 			tool!inner (id)
 		`);
 		if (filter.id) {
@@ -25,6 +25,9 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 		}
 		if (filter.uses_tool) {
 			query = query.eq('tool.id', filter.uses_tool);
+		}
+		if (filter.with_valor) {
+			query = query.eq('valor.id', filter.with_valor);
 		}
 		if (filter.limit) {
 			query = query.limit(filter.limit);

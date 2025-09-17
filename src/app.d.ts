@@ -94,6 +94,7 @@ declare global {
 		interface CommunityFilter {
 			id?: Model.CommunityId[];
 			uses_tool?: Model.ToolId | null;
+			with_valor?: Model.ValorId | null;
 			limit?: number;
 		}
 	}
