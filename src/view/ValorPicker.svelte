@@ -7,6 +7,7 @@
 	import { Text } from '@smui/list';
 	import Textfield from '@smui/textfield';
 	import { v4 as uuid } from 'uuid';
+	import EmojiPicker from './EmojiPicker.svelte';
 
 	type Props = {
 		value?: Model.Valor | undefined;
@@ -21,6 +22,7 @@
 		(currentValor && resolveText(currentValor.description, $locale)) ?? ''
 	);
 	let description = $derived(currentDescription);
+	let currentIcon = $derived(currentValor?.icon ?? '');
 
 	let options = $state(Object.values($valors));
 	let localKey = $derived($locale ?? defaultLocale);
@@ -28,6 +30,7 @@
 		if (currentValor) {
 			value = {
 				...currentValor,
+				icon: currentIcon,
 				description: { ...currentValor.description, [localKey]: description }
 			};
 		}
@@ -61,6 +64,7 @@
 				<Text>Add {text}</Text>
 			{/snippet}
 		</Autocomplete>
+		<EmojiPicker label={$_('valor_icon')} bind:value={currentIcon} />
 		<Textfield
 			bind:value={description}
 			required
