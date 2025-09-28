@@ -48,5 +48,9 @@
   "no_one_yet": "Personne pour l'instant...",
   "communities_using": "Communautés utilisant {tool}",
   "footer_content": "Pour plus d'informations ou pour rejoindre le Réseau Bonfire, contactez-nous à <a href=\"mailto:info@project-bonfire.org\" target=\"_blank\">info@project-bonfire.org</a>.",
-  "signup_disabled": "Le Réseau Bonfire n'est pas encore prêt pour le public. Pour plus d'informations ou pour rejoindre le Réseau, contactez-nous à <a href=\"mailto:info@project-bonfire.org\" target=\"_blank\">info@project-bonfire.org</a>."
+  "signup_disabled": "Le Réseau Bonfire n'est pas encore prêt pour le public. Pour plus d'informations ou pour rejoindre le Réseau, contactez-nous à <a href=\"mailto:info@project-bonfire.org\" target=\"_blank\">info@project-bonfire.org</a>.",
+  "update_password": "Mettre à jour le mot de passe",
+  "enter_new_password": "Entrez votre nouveau mot de passe",
+  "new_password": "Nouveau mot de passe",
+  "confirm_password": "Confirmer le mot de passe"
 }

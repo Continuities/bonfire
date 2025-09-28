@@ -13,7 +13,13 @@
 	<Title>{$_('enter_new_password')}</Title>
 	<Content tag="form" method="POST" action="?/update">
 		<Stack>
-			<Textfield input$name="password" type="password" label={$_('password')} value="" required />
+			<Textfield
+				input$name="password"
+				type="password"
+				label={$_('new_password')}
+				value=""
+				required
+			/>
 			<Textfield
 				input$name="confirm"
 				type="password"

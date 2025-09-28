@@ -5,6 +5,11 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const password = formData.get('password') as string;
 		const confirm = formData.get('confirm') as string;
+
+		if (password !== confirm) {
+			redirect(303, '/auth/error');
+		}
+
 		const { error } = (await supabase?.auth.updateUser({ password })) ?? {
 			error: new Error('Supabase client not initialized')
 		};

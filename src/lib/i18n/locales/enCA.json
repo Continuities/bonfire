@@ -49,5 +49,9 @@
   "communities_using": "Communities using {tool}",
   "communities_upholding": "Communities upholding {valor}",
   "footer_content": "For more information or to join the Bonfire Network, contact us at <a href=\"mailto:info@project-bonfire.org\">info@project-bonfire.org</a>.",
-  "signup_disabled": "The Bonfire Network isn't ready for the public just yet. For more information or to join the Network, contact us at <a href=\"mailto:info@project-bonfire.org\">info@project-bonfire.org</a>."
+  "signup_disabled": "The Bonfire Network isn't ready for the public just yet. For more information or to join the Network, contact us at <a href=\"mailto:info@project-bonfire.org\">info@project-bonfire.org</a>.",
+  "update_password": "Update Password",
+  "enter_new_password": "Enter your new password",
+  "new_password": "New Password",
+  "confirm_password": "Confirm Password"
 }
