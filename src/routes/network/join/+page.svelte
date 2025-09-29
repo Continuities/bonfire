@@ -14,6 +14,7 @@
 	import ValorPickerDialog from '@view/ValorPickerDialog.svelte';
 	import ToolsList from '@view/ToolsList.svelte';
 	import ToolPickerDialog from '@view/ToolPickerDialog.svelte';
+	import LocationPicker from '@view/LocationPicker.svelte';
 
 	let addValorDialogOpen = $state<boolean>(false);
 	let addToolDialogOpen = $state<boolean>(false);
@@ -46,6 +47,7 @@
 				<p>{@html $_('basic_info_content')}</p>
 				<Stack gap={1}>
 					<TextField input$name="name" label={$_('community_name')} required value="" />
+					<LocationPicker label={$_('community_location')} name="location" required fullWidth />
 					<TextField
 						input$name="description"
 						label={$_('community_description')}

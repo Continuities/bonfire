@@ -3,6 +3,8 @@
 	import DataTable, { Body, Row, Cell } from '@smui/data-table';
 	import ValorList from '@view/ValorList.svelte';
 	import { _, locale } from 'svelte-i18n';
+	import Location from './Location.svelte';
+	import { parseCity } from '$lib/city';
 	type Props = {
 		communities: Model.Community[];
 		fullWidth?: boolean;
@@ -26,6 +28,9 @@
 							<div class="community-info">
 								<div class="community-name">
 									{community.name}
+								</div>
+								<div class="community-location">
+									<Location location={parseCity(community.location)} />
 								</div>
 								<div class="community-url">
 									<a href={community.url} target="_blank" rel="noopener">
@@ -58,7 +63,7 @@
 		font-weight: bold;
 		font-size: 1.5rem;
 	}
-	.community-url {
+	.community-location {
 		margin-top: 0.3rem;
 	}
 	.community-description {
