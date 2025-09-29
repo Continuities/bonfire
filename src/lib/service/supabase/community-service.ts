@@ -40,7 +40,6 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			console.error('Error fetching communities:', error);
 		}
 
-		console.log(`Fetched ${data?.length ?? 0} community rows from Supabase`);
 
 		const communities = await Promise.all(
 			data?.map<Promise<Model.Community>>(async (d) => {
