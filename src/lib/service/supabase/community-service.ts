@@ -57,7 +57,6 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			}) ?? []
 		);
 
-		console.log(`Fetched ${communities.length} communities from Supabase`);
 
 		return communities;
 	},
