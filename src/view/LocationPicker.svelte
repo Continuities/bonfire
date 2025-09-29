@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Autocomplete from '@smui-extra/autocomplete';
-	import { Country, State, City, type ICity } from 'country-state-city';
+	import { City, type ICity } from 'country-state-city';
 
 	const MAX_HASH_KEY_LENGTH = 5;
 
@@ -9,9 +9,10 @@
 		label?: string | undefined;
 		name?: string | undefined;
 		required?: boolean | undefined;
+		fullWidth?: boolean | undefined;
 	};
 
-	let { value = $bindable(), label, required, name }: Props = $props();
+	let { value = $bindable(), label, required, name, fullWidth }: Props = $props();
 	let text = $state('');
 
 	const getKey = (str: string) => str.substring(0, MAX_HASH_KEY_LENGTH).toLowerCase();
@@ -29,8 +30,6 @@
 	let currentKey = $derived(getKey(text));
 	let cities = $derived(cityHash[currentKey] ?? []);
 
-	$effect(() => console.log(value));
-
 	const getCityLabel = (city: ICity) => {
 		if (!city) return '';
 		return `${city.name}, ${city.stateCode}, ${city.countryCode}`;
@@ -42,6 +41,7 @@
 	bind:text
 	textfield$required={required}
 	textfield$input$name={name}
+	textfield$style={fullWidth ? 'width: 100%' : undefined}
 	options={cities}
 	showMenuWithNoInput={false}
 	{label}

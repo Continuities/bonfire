@@ -75,6 +75,7 @@ declare global {
 		interface Community {
 			id: CommunityId;
 			name: string;
+			location: string;
 			description: I18n.LocaleText;
 			url: string | null;
 			valors: Record<ValorId, Valor>;

@@ -15,10 +15,13 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 		let query = supabase.from('community').select(`
 			id,
 			name,
+			city,
+			state,
+			country,
 			url,
 			description,
-			valor!inner (id),
-			tool!inner (id)
+			valor (id),
+			tool (id)
 		`);
 		if (filter.id) {
 			query = query.in('id', filter.id);
@@ -37,6 +40,8 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			console.error('Error fetching communities:', error);
 		}
 
+		console.log(`Fetched ${data?.length ?? 0} community rows from Supabase`);
+
 		const communities = await Promise.all(
 			data?.map<Promise<Model.Community>>(async (d) => {
 				const valors = await services.valor.getValors({ id: d.valor.map((v) => String(v.id)) });
@@ -44,6 +49,7 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 				return {
 					id: d.id,
 					name: d.name,
+					location: `${d.city}, ${d.state}, ${d.country}`,
 					description: d.description,
 					url: d.url,
 					valors: Object.fromEntries(valors.map((v) => [v.id, v])),
@@ -51,6 +57,8 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 				};
 			}) ?? []
 		);
+
+		console.log(`Fetched ${communities.length} communities from Supabase`);
 
 		return communities;
 	},
@@ -62,17 +70,29 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 		await services.valor.addMissingValors(Object.values(community.valors));
 		await services.tool.addMissingTools(Object.values(community.tools));
 
+		const [city, state, country] = community.location.split(',').map((s) => s.trim());
+
+		console.log('Upserting community:', community.name);
+		console.log('Location parsed as:', { city, state, country });
+
 		const community_rows = [
 			{
 				id: community.id,
 				name: community.name,
+				city,
+				state,
+				country,
 				url: community.url,
 				description: community.description
 			}
 		];
-		await supabase
+		const { error } = await supabase
 			.from('community')
 			.upsert(community_rows, { onConflict: 'id', ignoreDuplicates: true });
+
+		if (error) {
+			throw new Error(`Error upserting community: ${error.message}`);
+		}
 
 		await supabase.from('valors_for_community').upsert(
 			Object.values(community.valors).map((valor) => ({
@@ -88,6 +108,8 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			})),
 			{ onConflict: 'community_id,tool_id', ignoreDuplicates: true }
 		);
+
+		console.log('Community upserted:', community.name);
 	}
 });
 

@@ -36,8 +36,9 @@ export const actions = {
 			return fail(501, { message: 'Update not Implemented' });
 		}
 
-		const name = data.get('name')?.toString();
-		const description = data.get('description')?.toString();
+		const name = data.get('name')!.toString();
+		const location = data.get('location')!.toString();
+		const description = data.get('description')!.toString();
 		const url = data.get('url')?.toString() ?? null;
 		const valors: Record<Model.ValorId, Model.Valor> = JSON.parse(
 			data.get('valors')?.toString() ?? '{}'
@@ -53,6 +54,7 @@ export const actions = {
 		const community: Model.Community = {
 			id: uuid(),
 			name,
+			location,
 			description: { [get(locale) ?? 'en']: description },
 			url,
 			valors,
