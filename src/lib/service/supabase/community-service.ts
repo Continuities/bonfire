@@ -71,7 +71,6 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 		const [city, state, country] = community.location.split(',').map((s) => s.trim());
 
 		console.log('Upserting community:', community.name);
-		console.log('Location parsed as:', { city, state, country });
 
 		const community_rows = [
 			{
