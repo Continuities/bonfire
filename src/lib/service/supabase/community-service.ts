@@ -40,7 +40,6 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			console.error('Error fetching communities:', error);
 		}
 
-
 		const communities = await Promise.all(
 			data?.map<Promise<Model.Community>>(async (d) => {
 				const valors = await services.valor.getValors({ id: d.valor.map((v) => String(v.id)) });
@@ -57,7 +56,6 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			}) ?? []
 		);
 
-
 		return communities;
 	},
 
@@ -69,8 +67,6 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 		await services.tool.addMissingTools(Object.values(community.tools));
 
 		const [city, state, country] = community.location.split(',').map((s) => s.trim());
-
-		console.log('Upserting community:', community.name);
 
 		const community_rows = [
 			{
@@ -105,8 +101,6 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			})),
 			{ onConflict: 'community_id,tool_id', ignoreDuplicates: true }
 		);
-
-		console.log('Community upserted:', community.name);
 	}
 });
 

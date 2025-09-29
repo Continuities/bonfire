@@ -19,7 +19,6 @@
 		if (!displayingValor) {
 			return null;
 		}
-		console.log('fetching communities for valor', displayingValor.id);
 		const res = await fetch(`/api/network?with_valor=${displayingValor.id}`);
 		if (!res.ok) {
 			console.error('Failed to fetch communities for valor', displayingValor.id, res.statusText);
