@@ -26,3 +26,15 @@ export const CommunityFilter = (search: URLSearchParams): Filter.CommunityFilter
 	}
 	return filter;
 };
+
+export const CommunityFilterURL = (filter: Filter.CommunityFilter, base?: string) => {
+	const url = new URL('/network', base);
+	for (const [key, value] of Object.entries(filter)) {
+		url.searchParams.append(key, String(value));
+	}
+	return url;
+};
+
+export const locationFromFilter = (filter: Filter.CommunityFilter) => {
+	return [filter.city, filter.stateCode, filter.countryCode].filter(Boolean).join(', ');
+};

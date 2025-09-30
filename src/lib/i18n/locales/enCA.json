@@ -50,6 +50,7 @@
   "no_one_yet": "No one yet...",
   "communities_using": "Communities using {tool}",
   "communities_upholding": "Communities upholding {valor}",
+  "communities_in_location": "Communities in {location}",
   "footer_content": "For more information or to join the Bonfire Network, contact us at <a href=\"mailto:info@project-bonfire.org\">info@project-bonfire.org</a>.",
   "signup_disabled": "The Bonfire Network isn't ready for the public just yet. For more information or to join the Network, contact us at <a href=\"mailto:info@project-bonfire.org\">info@project-bonfire.org</a>.",
   "update_password": "Update Password",

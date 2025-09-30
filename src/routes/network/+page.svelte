@@ -5,10 +5,9 @@
 	import PageTitle from '@view/PageTitle.svelte';
 	import Stack from '@view/Stack.svelte';
 	import { _, locale } from 'svelte-i18n';
-	import { writable } from 'svelte/store';
 
 	let { data } = $props();
-	let communities = writable(data.communities);
+	let communities = $derived(data.communities);
 </script>
 
 <PageTitle title={$_('community_network')} />
@@ -22,10 +21,16 @@
 				values: { valor: resolveText(data.valor.name, $locale) }
 			})}</Title
 		>
+	{:else if data.location}
+		<Title>
+			{$_('communities_in_location', {
+				values: { location: data.location }
+			})}
+		</Title>
 	{/if}
 	<Content>
 		<Stack>
-			<CommunityList communities={$communities} fullWidth />
+			<CommunityList {communities} fullWidth />
 		</Stack>
 	</Content>
 </Paper>
