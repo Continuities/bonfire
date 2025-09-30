@@ -4,7 +4,7 @@ values
   (
     'accountability',
     '📝', 
-    '{ "en": "Diversity", "fr": "Diversité"}',
+    '{ "en": "Accountability", "fr": "Responsabilité"}',
     '{ "en": "We embrace and celebrate the unique backgrounds, perspectives, and experiences of all individuals within our community.", "fr": "Nous embrassons et célébrons les origines, perspectives et expériences uniques de chaque individu au sein de notre communauté." }'
   ),
   (

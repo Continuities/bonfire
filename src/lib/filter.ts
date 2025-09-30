@@ -8,5 +8,21 @@ export const CommunityFilter = (search: URLSearchParams): Filter.CommunityFilter
 	if (with_valor) {
 		filter.with_valor = with_valor;
 	}
+	const limit = search.get('limit');
+	if (limit) {
+		filter.limit = parseInt(limit);
+	}
+	const city = search.get('city');
+	if (city) {
+		filter.city = city;
+	}
+	const stateCode = search.get('stateCode');
+	if (stateCode) {
+		filter.stateCode = stateCode;
+	}
+	const countryCode = search.get('countryCode');
+	if (countryCode) {
+		filter.countryCode = countryCode;
+	}
 	return filter;
 };

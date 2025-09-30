@@ -26,11 +26,13 @@ declare global {
 		type ServiceConstructor<T> = (locals: App.Locals) => T;
 		interface ToolService {
 			getTools: (filter?: Filter.ToolFilter) => Promise<Model.Tool[]>;
+			getToolsForCommunity: (communityId: Model.CommunityId) => Promise<Model.Tool[]>;
 			getToolTypes: () => Promise<Record<Model.ToolTypeId, Model.ToolType>>;
 			addMissingTools: (tools: Model.Tool[]) => Promise<void>;
 		}
 		interface ValorService {
 			getValors: (filter?: Filter.ValorFilter) => Promise<Model.Valor[]>;
+			getValorsForCommunity: (communityId: Model.CommunityId) => Promise<Model.Valor[]>;
 			addMissingValors: (valors: Model.Valor[]) => Promise<void>;
 		}
 		interface CommunityService {
@@ -57,6 +59,7 @@ declare global {
 			name: I18n.LocaleText;
 			description: I18n.LocaleText;
 			icon?: Emoji;
+			upheld_by?: CommunityId[];
 		}
 		interface Tool {
 			id: ToolId;
@@ -97,6 +100,9 @@ declare global {
 			uses_tool?: Model.ToolId | null;
 			with_valor?: Model.ValorId | null;
 			limit?: number;
+			city?: string;
+			stateCode?: string;
+			countryCode?: string;
 		}
 	}
 
