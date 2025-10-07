@@ -57,5 +57,7 @@
   "enter_new_password": "Enter your new password",
   "new_password": "New Password",
   "confirm_password": "Confirm Password",
-  "location_filter": "Location"
+  "add_text": "Add {text}",
+  "location_filter": "Location",
+  "tool_filter": "Tool"
 }
