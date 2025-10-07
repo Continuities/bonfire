@@ -59,5 +59,6 @@
   "confirm_password": "Confirm Password",
   "add_text": "Add {text}",
   "location_filter": "Location",
-  "tool_filter": "Tool"
+  "tool_filter": "Tool",
+  "valor_filter": "Value"
 }

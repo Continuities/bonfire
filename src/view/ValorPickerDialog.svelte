@@ -27,7 +27,8 @@
 	<Title>{$_('add_a_valor')}</Title>
 	<form>
 		<Content style="min-width: 300px;overflow:visible;">
-			<ValorPicker bind:value={currentValor} />
+			<p>{$_('add_valor_dialog_content')}</p>
+			<ValorPicker label={$_('valor')} editable required fullWidth bind:value={currentValor} />
 		</Content>
 		<Actions>
 			<Button>{$_('cancel')}</Button>
