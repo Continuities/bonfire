@@ -84,6 +84,11 @@ declare global {
 			valors: Record<ValorId, Valor>;
 			tools: Record<ToolId, Tool>;
 		}
+		interface Location {
+			city?: string | null | undefined;
+			stateCode?: string | null | undefined;
+			countryCode: string;
+		}
 	}
 
 	namespace Filter {
@@ -100,9 +105,7 @@ declare global {
 			uses_tool?: Model.ToolId | null;
 			with_valor?: Model.ValorId | null;
 			limit?: number;
-			city?: string;
-			stateCode?: string;
-			countryCode?: string;
+			location?: Model.Location;
 		}
 	}
 

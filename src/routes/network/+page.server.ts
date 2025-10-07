@@ -4,25 +4,25 @@ import { v4 as uuid } from 'uuid';
 import { fail } from '@sveltejs/kit';
 import { locale } from 'svelte-i18n';
 import { get } from 'svelte/store';
-import { CommunityFilter, locationFromFilter } from '$lib/filter';
+import { CommunityFilter } from '$lib/filter';
 
 type LoadData = {
+	filter: Filter.CommunityFilter;
 	communities: Model.Community[];
 	tool?: Model.Tool;
 	valor?: Model.Valor;
-	location?: string;
 };
 export const load: PageServerLoad = async ({ url, locals: { services } }): Promise<LoadData> => {
 	const filter = CommunityFilter(url.searchParams);
 	return {
+		filter,
 		communities: await services.community.getCommunities(filter),
 		tool: filter.uses_tool
 			? (await services.tool.getTools({ id: [filter.uses_tool] }))[0]
 			: undefined,
 		valor: filter.with_valor
 			? (await services.valor.getValors({ id: [filter.with_valor] }))[0]
-			: undefined,
-		location: locationFromFilter(filter)
+			: undefined
 	};
 };
 

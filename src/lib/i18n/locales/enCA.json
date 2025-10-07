@@ -56,5 +56,6 @@
   "update_password": "Update Password",
   "enter_new_password": "Enter your new password",
   "new_password": "New Password",
-  "confirm_password": "Confirm Password"
+  "confirm_password": "Confirm Password",
+  "location_filter": "Location"
 }

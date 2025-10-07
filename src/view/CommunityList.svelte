@@ -4,7 +4,7 @@
 	import ValorList from '@view/ValorList.svelte';
 	import { _, locale } from 'svelte-i18n';
 	import Location from './Location.svelte';
-	import { parseCity } from '$lib/city';
+	import { parseLocation } from '$lib/location';
 	type Props = {
 		communities: Model.Community[];
 		fullWidth?: boolean;
@@ -30,7 +30,7 @@
 									{community.name}
 								</div>
 								<div class="community-location">
-									<Location location={parseCity(community.location)} />
+									<Location location={parseLocation(community.location)} />
 								</div>
 								<div class="community-url">
 									<a href={community.url} target="_blank" rel="noopener">

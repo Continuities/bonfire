@@ -1,27 +1,32 @@
 <script lang="ts">
-	import type { ICity } from 'country-state-city';
 	import { page } from '$app/state';
-	import { CommunityFilterURL, locationFromFilter } from '$lib/filter';
+	import { CommunityFilterURL } from '$lib/filter';
 
 	type Props = {
-		location: ICity;
+		location: Model.Location;
 	};
 
 	let { location }: Props = $props();
 
 	let cityFilter = $derived({
-		city: location.name,
-		stateCode: location.stateCode,
-		countryCode: location.countryCode
+		location: {
+			city: location.city,
+			stateCode: location.stateCode,
+			countryCode: location.countryCode
+		}
 	});
 
 	let stateFilter = $derived({
-		stateCode: location.stateCode,
-		countryCode: location.countryCode
+		location: {
+			stateCode: location.stateCode,
+			countryCode: location.countryCode
+		}
 	});
 
 	let countryFilter = $derived({
-		countryCode: location.countryCode
+		location: {
+			countryCode: location.countryCode
+		}
 	});
 
 	let cityURL = $derived(CommunityFilterURL(cityFilter, page.url.origin));
@@ -30,15 +35,15 @@
 </script>
 
 <a href={cityURL.toString()} class="location-link">
-	{cityFilter.city}
+	{location.city}
 </a>
 ,
 <a href={stateURL.toString()} class="location-link">
-	{stateFilter.stateCode}
+	{location.stateCode}
 </a>
 ,
 <a href={countryURL.toString()} class="location-link">
-	{countryFilter.countryCode}
+	{location.countryCode}
 </a>
 
 <style>

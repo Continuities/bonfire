@@ -24,14 +24,14 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 		if (filter.id) {
 			query = query.in('id', filter.id);
 		}
-		if (filter.city) {
-			query = query.ilike('city', `%${filter.city}%`);
+		if (filter.location?.city) {
+			query = query.ilike('city', `%${filter.location.city}%`);
 		}
-		if (filter.stateCode) {
-			query = query.ilike('state', `%${filter.stateCode}%`);
+		if (filter.location?.stateCode) {
+			query = query.ilike('state', `%${filter.location.stateCode}%`);
 		}
-		if (filter.countryCode) {
-			query = query.ilike('country', `%${filter.countryCode}%`);
+		if (filter.location?.countryCode) {
+			query = query.ilike('country', `%${filter.location.countryCode}%`);
 		}
 		if (filter.limit) {
 			query = query.limit(filter.limit);
