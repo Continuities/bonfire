@@ -11,7 +11,7 @@
 
 	type Props = {
 		label: string;
-		value: Model.Tool | null | undefined;
+		value: Model.Tool | undefined;
 		editable?: boolean | undefined;
 		required?: boolean | undefined;
 		fullWidth?: boolean | undefined;
@@ -32,7 +32,7 @@
 	$effect(() => {
 		if (!currentTool) {
 			if (!editable) {
-				value = null;
+				value = undefined;
 			}
 			return;
 		}
