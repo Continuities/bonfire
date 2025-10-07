@@ -19,18 +19,19 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 			state,
 			country,
 			url,
-			description,
-			valor (id),
-			tool (id)
+			description
 		`);
 		if (filter.id) {
 			query = query.in('id', filter.id);
 		}
-		if (filter.uses_tool) {
-			query = query.eq('tool.id', filter.uses_tool);
+		if (filter.location?.city) {
+			query = query.ilike('city', `%${filter.location.city}%`);
 		}
-		if (filter.with_valor) {
-			query = query.eq('valor.id', filter.with_valor);
+		if (filter.location?.stateCode) {
+			query = query.ilike('state', `%${filter.location.stateCode}%`);
+		}
+		if (filter.location?.countryCode) {
+			query = query.ilike('country', `%${filter.location.countryCode}%`);
 		}
 		if (filter.limit) {
 			query = query.limit(filter.limit);
@@ -42,8 +43,8 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 
 		const communities = await Promise.all(
 			data?.map<Promise<Model.Community>>(async (d) => {
-				const valors = await services.valor.getValors({ id: d.valor.map((v) => String(v.id)) });
-				const tools = await services.tool.getTools({ id: d.tool.map((t) => String(t.id)) });
+				const valors = await services.valor.getValorsForCommunity(d.id);
+				const tools = await services.tool.getToolsForCommunity(d.id);
 				return {
 					id: d.id,
 					name: d.name,
@@ -55,6 +56,18 @@ const CommunityService: Service.ServiceConstructor<Service.CommunityService> = (
 				};
 			}) ?? []
 		);
+
+		if (filter.uses_tool || filter.with_valor) {
+			return communities.filter((community) => {
+				if (filter.uses_tool && !community.tools[filter.uses_tool]) {
+					return false;
+				}
+				if (filter.with_valor && !community.valors[filter.with_valor]) {
+					return false;
+				}
+				return true;
+			});
+		}
 
 		return communities;
 	},

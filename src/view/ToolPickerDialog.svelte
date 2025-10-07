@@ -27,7 +27,8 @@
 	<Title>{$_('add_a_tool')}</Title>
 	<form>
 		<Content style="min-width: 300px;overflow:visible;">
-			<ToolPicker bind:value={currentTool} />
+			<p>{$_('add_tool_dialog_content')}</p>
+			<ToolPicker required editable fullWidth label={$_('tool')} bind:value={currentTool} />
 		</Content>
 		<Actions>
 			<Button>{$_('cancel')}</Button>

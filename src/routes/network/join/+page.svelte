@@ -47,7 +47,13 @@
 				<p>{@html $_('basic_info_content')}</p>
 				<Stack gap={1}>
 					<TextField input$name="name" label={$_('community_name')} required value="" />
-					<LocationPicker label={$_('community_location')} name="location" required fullWidth />
+					<LocationPicker
+						cities
+						label={$_('community_location')}
+						name="location"
+						required
+						fullWidth
+					/>
 					<TextField
 						input$name="description"
 						label={$_('community_description')}

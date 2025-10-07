@@ -10,14 +10,18 @@
 	import EmojiPicker from './EmojiPicker.svelte';
 
 	type Props = {
-		value?: Model.Valor | undefined;
+		label: string;
+		value: Model.Valor | undefined;
+		editable?: boolean | undefined;
+		required?: boolean | undefined;
+		fullWidth?: boolean | undefined;
 	};
 
-	let { value = $bindable() }: Props = $props();
-
+	let { value = $bindable(), label, editable, required, fullWidth }: Props = $props();
+	let style = $derived(fullWidth ? 'width: 100%;' : undefined);
 	let { valors } = getStores();
-	let currentValor = $state<Model.Valor | undefined>();
-	let text = $state('');
+	let currentValor = $state<Model.Valor | undefined>(value);
+	let text = $derived(currentValor ? resolveText(currentValor.name, $locale) : '');
 	let currentDescription = $derived(
 		(currentValor && resolveText(currentValor.description, $locale)) ?? ''
 	);
@@ -27,59 +31,62 @@
 	let options = $state(Object.values($valors));
 	let localKey = $derived($locale ?? defaultLocale);
 	$effect(() => {
-		if (currentValor) {
-			value = {
-				...currentValor,
-				icon: currentIcon,
-				description: { ...currentValor.description, [localKey]: description }
-			};
+		if (!currentValor) {
+			if (!editable) {
+				value = undefined;
+			}
+			return;
 		}
+		value = {
+			...currentValor,
+			icon: currentIcon,
+			description: { ...currentValor.description, [localKey]: description }
+		};
 	});
 </script>
 
-<div class="content">
-	<Stack>
-		<p>{$_('add_valor_dialog_content')}</p>
-		<Autocomplete
-			bind:value={currentValor}
-			bind:text
-			textfield$required
-			style="width: 100%;"
-			textfield$style="width: 100%;"
-			{options}
-			showMenuWithNoInput={false}
-			noMatchesActionDisabled={false}
-			onSMUIAutocompleteNoMatchesAction={() => {
-				currentValor = {
-					id: uuid(),
-					name: { [localKey]: text },
-					description: { [localKey]: '' }
-				};
-				options = [...options, currentValor];
-			}}
-			getOptionLabel={(valor) => (valor && resolveText(valor.name, $locale)) ?? ''}
-			label={$_('valor')}
-		>
-			{#snippet noMatches()}
-				<Text>Add {text}</Text>
-			{/snippet}
-		</Autocomplete>
+<Stack>
+	<Autocomplete
+		bind:value={currentValor}
+		bind:text
+		textfield$required={required}
+		{style}
+		textfield$style={style}
+		{options}
+		showMenuWithNoInput={true}
+		noMatchesActionDisabled={!editable}
+		onSMUIAutocompleteNoMatchesAction={() => {
+			if (!editable) {
+				return;
+			}
+			currentValor = {
+				id: uuid(),
+				name: { [localKey]: text },
+				icon: '',
+				description: { [localKey]: '' }
+			};
+			options = [...options, currentValor];
+		}}
+		getOptionLabel={(valor) => (valor && resolveText(valor.name, $locale)) ?? ''}
+		{label}
+	>
+		{#snippet noMatches()}
+			{#if editable}
+				<Text>{$_('add_text', { values: { text } })}</Text>
+			{/if}
+		{/snippet}
+	</Autocomplete>
+	{#if editable}
 		<EmojiPicker label={$_('valor_icon')} bind:value={currentIcon} />
 		<Textfield
 			bind:value={description}
 			required
-			style="width: 100%;"
-			helperLine$style="width: 100%;"
+			{style}
+			helperLine$style={style}
 			input$rows={6}
 			textarea
 			disabled={!currentValor}
 			label={$_('valor_description')}
 		/>
-	</Stack>
-</div>
-
-<style>
-	.content {
-		min-height: 300px;
-	}
-</style>
+	{/if}
+</Stack>

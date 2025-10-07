@@ -10,22 +10,30 @@
 	import ToolTypePicker from './ToolTypePicker.svelte';
 
 	type Props = {
-		value?: Model.Tool | undefined;
+		label: string;
+		value: Model.Tool | undefined;
+		editable?: boolean | undefined;
+		required?: boolean | undefined;
+		fullWidth?: boolean | undefined;
 	};
 
-	let { value = $bindable() }: Props = $props();
+	let { value = $bindable(), label, editable, required, fullWidth }: Props = $props();
 
 	let { tools, toolTypes } = getStores();
-	let currentTool = $state<Model.Tool | undefined>();
-	let text = $state('');
+	let currentTool = $state<Model.Tool | undefined>(value ?? undefined);
+	let text = $derived(currentTool?.name ?? '');
 	let url = $derived(currentTool?.url ?? '');
 	let description = $derived((currentTool && resolveText(currentTool.description, $locale)) ?? '');
 	let currentTypes = $derived(currentTool?.types ?? {});
 	let localeKey = $derived($locale ?? defaultLocale);
+	let style = $derived(fullWidth ? 'width: 100%;' : undefined);
 
 	let options = $state(Object.values($tools));
 	$effect(() => {
 		if (!currentTool) {
+			if (!editable) {
+				value = undefined;
+			}
 			return;
 		}
 		const descriptionChanged = description !== resolveText(currentTool.description, $locale);
@@ -49,40 +57,44 @@
 	});
 </script>
 
-<div class="content">
-	<Stack>
-		<p>{$_('add_tool_dialog_content')}</p>
-		<Autocomplete
-			bind:value={currentTool}
-			bind:text
-			textfield$required
-			style="width: 100%;"
-			textfield$style="width: 100%;"
-			{options}
-			showMenuWithNoInput={true}
-			noMatchesActionDisabled={false}
-			onSMUIAutocompleteNoMatchesAction={() => {
-				currentTool = {
-					id: uuid(),
-					name: text,
-					url: '',
-					description: { [localeKey]: '' },
-					types: {}
-				};
-				options = [...options, currentTool];
-			}}
-			getOptionLabel={(tool) => tool.name ?? ''}
-			label={$_('tool')}
-		>
-			{#snippet noMatches()}
-				<Text>Add {text}</Text>
-			{/snippet}
-		</Autocomplete>
+<Stack>
+	<Autocomplete
+		bind:value={currentTool}
+		bind:text
+		textfield$required={required}
+		{style}
+		textfield$style={style}
+		{options}
+		showMenuWithNoInput={true}
+		noMatchesActionDisabled={!editable}
+		onSMUIAutocompleteNoMatchesAction={() => {
+			if (!editable) {
+				return;
+			}
+			currentTool = {
+				id: uuid(),
+				name: text,
+				url: '',
+				description: { [localeKey]: '' },
+				types: {}
+			};
+			options = [...options, currentTool];
+		}}
+		getOptionLabel={(tool) => tool.name ?? ''}
+		{label}
+	>
+		{#snippet noMatches()}
+			{#if editable}
+				<Text>{$_('add_text', { values: { text } })}</Text>
+			{/if}
+		{/snippet}
+	</Autocomplete>
+	{#if editable}
 		<Textfield
 			bind:value={url}
 			required
-			style="width: 100%;"
-			helperLine$style="width: 100%;"
+			{style}
+			helperLine$style={style}
 			disabled={!currentTool}
 			label={$_('tool_url')}
 		/>
@@ -94,18 +106,12 @@
 		<Textfield
 			bind:value={description}
 			required
-			style="width: 100%;"
-			helperLine$style="width: 100%;"
+			{style}
+			helperLine$style={style}
 			input$rows={6}
 			textarea
 			disabled={!currentTool}
 			label={$_('tool_description')}
 		/>
-	</Stack>
-</div>
-
-<style>
-	.content {
-		min-height: 300px;
-	}
-</style>
+	{/if}
+</Stack>
