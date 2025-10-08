@@ -31,7 +31,7 @@
 	{@html `  <script type="application/ld+json">{
    "@context": "https://schema.org",
    "@type": "Website",
-   "name": "${title} | example.com",
+   "name": "${title} | ${domain}",
    "url": "${url}",
    "logo": "${image}"  }</script>`}
 
