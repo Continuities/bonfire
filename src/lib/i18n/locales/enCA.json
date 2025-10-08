@@ -1,6 +1,8 @@
 {
   "work_in_progress": "This is a work in progress",
   "the_openburn_project": "Project Bonfire",
+  "bonfire_description": "Project Bonfire exists to create and maintain a set of open source tools and resources that empower communities to define themselves, organise, and create experiences together.",
+  "network_description": "The Bonfire Network is a directory of communities and a shared library of resources built from collective knowledge and intended to support the creation of shared experiences.",
   "did_you_know": "Did you know?",
   "did_you_know_content": "Certain terms and phrases at the core of the \"burner\" identity are actually intellectual property, and using them requires a license from The Burning Man Project. Things like \"<strong>Burning Man</strong>,\" \"<strong>Decompression Party</strong>,\" and all of the <strong>Ten Principles</strong>. To license this stuff, communities agree to behave within certain cultural norms defined by The Burning Man Project. This agreement does not work both ways, and licensors have no control over the brand that they have licensed nor the behaviour of The Burning Man Project itself.",
   "what_is_openburn_content": "Project Bonfire exists to create and maintain a set of open source tools and resources that empower communities to define themselves, organise, and create experiences together. Everything will always be free to use, copy, modify, and distribute in any way. This toolkit is intended to support community-building, but communities have different needs and no one toolkit can meet them all. Use the parts that work, and ignore the parts that don't. We welcome contributions to the project from anyone who wants to help make things better.",

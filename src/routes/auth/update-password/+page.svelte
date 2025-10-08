@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Paper, { Title, Content } from '@smui/paper';
-	import PageTitle from '@view/PageTitle.svelte';
+	import PageInfo from '@view/PageInfo.svelte';
 	import { _ } from 'svelte-i18n';
 	import Textfield from '@smui/textfield';
 	import Button from '@smui/button';
 	import Stack from '@view/Stack.svelte';
 </script>
 
-<PageTitle title={$_('update_password')} />
+<PageInfo title={$_('update_password')} description={$_('bonfire_description')} />
 
 <Paper>
 	<Title>{$_('enter_new_password')}</Title>

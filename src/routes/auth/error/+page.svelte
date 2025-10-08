@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Paper, { Content } from '@smui/paper';
-	import PageTitle from '@view/PageTitle.svelte';
+	import PageInfo from '@view/PageInfo.svelte';
 	import { _ } from 'svelte-i18n';
 </script>
 
-<PageTitle title={$_('login_error')} />
+<PageInfo title={$_('login_error')} description={$_('bonfire_description')} />
 
 <Paper>
 	<Content>

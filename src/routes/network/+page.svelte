@@ -2,7 +2,7 @@
 	import Paper, { Content, Title } from '@smui/paper';
 	import CommunityFilters from '@view/CommunityFilters.svelte';
 	import CommunityList from '@view/CommunityList.svelte';
-	import PageTitle from '@view/PageTitle.svelte';
+	import PageInfo from '@view/PageInfo.svelte';
 	import Stack from '@view/Stack.svelte';
 	import { _ } from 'svelte-i18n';
 	import { goto } from '$app/navigation';
@@ -19,7 +19,7 @@
 	};
 </script>
 
-<PageTitle title={$_('community_network')} />
+<PageInfo title={$_('community_network')} description={$_('network_description')} />
 
 <Paper>
 	<Content>
