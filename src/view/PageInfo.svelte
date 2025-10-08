@@ -15,7 +15,7 @@
 <svelte:head>
 	<title>{title} | project-bonfire.org</title>
 	<meta name="description" content={description} />
-	<meta property="og_site_name" content={domain} />
+	<meta property="og:site_name" content={domain} />
 	<meta property="og:url" content={url} />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={title} />
