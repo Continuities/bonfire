@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import Paper, { Title, Content } from '@smui/paper';
-	import PageTitle from '@view/PageTitle.svelte';
+	import PageInfo from '@view/PageInfo.svelte';
 	import ValueList from '@view/ValorList.svelte';
 	import ValorDialog from '@view/ValorDialog.svelte';
 	import Stack from '@view/Stack.svelte';
@@ -28,7 +28,7 @@
 	});
 </script>
 
-<PageTitle title={$_('the_openburn_project')} />
+<PageInfo title={$_('the_openburn_project')} description={$_('bonfire_description')} />
 
 <Stack gap={2}>
 	<Paper>

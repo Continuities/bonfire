@@ -4,7 +4,7 @@
 	import Button from '@smui/button';
 	import TextField from '@smui/textfield';
 	import { _ } from 'svelte-i18n';
-	import PageTitle from '@view/PageTitle.svelte';
+	import PageInfo from '@view/PageInfo.svelte';
 	import Stack from '@view/Stack.svelte';
 	import SvgIcon from '@view/SvgIcon.svelte';
 	import { mdiPlus } from '@mdi/js';
@@ -37,7 +37,7 @@
 	};
 </script>
 
-<PageTitle title={$_('join_the_network')} />
+<PageInfo title={$_('join_the_network')} description={$_('network_description')} />
 
 <form class="register-form" method="POST" action="./">
 	<Stack gap={2}>

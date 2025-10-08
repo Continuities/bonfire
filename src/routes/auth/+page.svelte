@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '@smui/button';
-	import PageTitle from '@view/PageTitle.svelte';
+	import PageInfo from '@view/PageInfo.svelte';
 	import Paper, { Title, Content } from '@smui/paper';
 	import Textfield from '@smui/textfield';
 	import { _ } from 'svelte-i18n';
@@ -8,7 +8,7 @@
 	import { PUBLIC_SIGNUP_ENABLED } from '$env/static/public';
 </script>
 
-<PageTitle title={$_('login_or_signup')} />
+<PageInfo title={$_('login_or_signup')} description={$_('bonfire_description')} />
 <Paper>
 	<Title>{$_('enter_credentials')}</Title>
 	<Content tag="form" method="POST" action="?/login">
