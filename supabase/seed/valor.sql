@@ -5,7 +5,7 @@ values
     'accountability',
     '📝', 
     '{ "en": "Accountability", "fr": "Responsabilité"}',
-    '{ "en": "We embrace and celebrate the unique backgrounds, perspectives, and experiences of all individuals within our community.", "fr": "Nous embrassons et célébrons les origines, perspectives et expériences uniques de chaque individu au sein de notre communauté." }'
+    '{ "en": "We believe that holding each other and ourselves accountable for our actions creates a healthy and sustainable community.", "fr": "Nous croyons que se tenir mutuellement et soi-même responsable de nos actions crée une communauté saine et durable." }'
   ),
   (
     'anarchy',
