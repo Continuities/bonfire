@@ -33,7 +33,7 @@
    "@type": "Website",
    "name": "${title} | example.com",
    "url": "${url}",
-   "logo": ${image}  }</script>`}
+   "logo": "${image}"  }</script>`}
 
 	<link rel="icon" href={favicon} type="image/png" />
 </svelte:head>
