@@ -51,4 +51,22 @@ values
       "en": "Loomio is open-source tool for collaborative decision making. It allows to set up online decision making systems that include the whole community.",
       "fr": "Loomio est un outil open source destiné à la prise de décision collaborative. Il permet de mettre en place des systèmes de prise de décision en ligne qui incluent l''ensemble de la communauté."
     }'
+  ),
+  (
+    'volunteer-next',
+    'https://github.com/tohyperborea/volunteer-next',
+    'volunteer-next',
+    '{
+      "en": "volunteer-next is a fully-featured volunteer management system build in collaboration with Project Bonfire. It supports teams, shift signups, notification emails, and more.",
+      "fr": "volunteer-next est un système de gestion des bénévoles complet construit en collaboration avec Project Bonfire. Il prend en charge les équipes, les inscriptions aux quarts de travail, les e-mails de notification, et plus encore."
+    }'
+  ),
+  (
+    'ics-100',
+    'https://training.fema.gov/is/courseoverview.aspx?code=IS-100.c',
+    'ICS-100',
+    '{
+      "en": "The Incident Command System (ICS) was designed by FEMA to manage responses to dynamic emergencies, and it is surprisingly applicable to event management. The ICS-100 course provides an introduction to the Incident Command System and is a great resource for anyone interested in learning more about how to manage complex events.",
+      "fr": "Le Système de Commandement des Incidents (ICS) a été conçu par la FEMA pour gérer les réponses aux urgences dynamiques, et il est étonnamment applicable à la gestion d''événements. Le cours ICS-100 fournit une introduction au Système de Commandement des Incidents et est une excellente ressource pour toute personne intéressée à en apprendre davantage sur la gestion d''événements complexes."
+    }'
   );

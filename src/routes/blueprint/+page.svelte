@@ -80,7 +80,7 @@
 	{#if currentQuestionIndex === -1}
 		<p>{$_('start_an_event_description')}</p>
 		<Stack direction="row" justify="start" gap={1}>
-			<Button onclick={() => (currentQuestionIndex = 0)}>{$_('start')}</Button>
+			<Button variant="raised" onclick={() => (currentQuestionIndex = 0)}>{$_('start')}</Button>
 		</Stack>
 	{:else}
 		<Stack gap={0}>
@@ -94,6 +94,7 @@
 			</SegmentedButton>
 			{#if currentAnswer === 'yes'}
 				<p>{$_(currentQuestion.description)}</p>
+				<p>{$_(currentQuestion.allow_many_tools ? 'here_are_some' : 'here_are_some_single')}</p>
 				{#if currentQuestion.related_tool}
 					<ToolsList
 						tools={relatedTools}
@@ -106,9 +107,16 @@
 			{/if}
 		</Stack>
 		<Stack direction="row" justify="start" gap={1}>
-			<Button onclick={goBack} disabled={currentQuestionIndex <= 0}>{$_('back')}</Button>
+			<Button
+				variant="raised"
+				color="secondary"
+				onclick={goBack}
+				disabled={currentQuestionIndex <= 0}>{$_('back')}</Button
+			>
 			{#if currentQuestionIndex < BLUEPRINT_QUESTIONS.length - 1}
-				<Button onclick={submitAnswer} disabled={submitDisabled}>{$_('next')}</Button>
+				<Button variant="raised" onclick={submitAnswer} disabled={submitDisabled}
+					>{$_('next')}</Button
+				>
 			{:else}
 				<form method="POST">
 					<input
@@ -116,7 +124,7 @@
 						name="sections"
 						value={JSON.stringify(blueprintSections.filter(Boolean))}
 					/>
-					<Button type="submit" onclick={submitAnswer} disabled={submitDisabled}
+					<Button variant="raised" type="submit" onclick={submitAnswer} disabled={submitDisabled}
 						>{$_('finish')}</Button
 					>
 				</form>

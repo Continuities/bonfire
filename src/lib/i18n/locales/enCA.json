@@ -73,11 +73,17 @@
   "next": "Next",
   "finish": "Finish",
   "back": "Back",
+  "here_are_some": "Here are some resources that communities have found useful. Add as many as you like to your blueprint:",
+  "here_are_some_single": "Here are some tools that communities have used. Pick one that works for you:",
+  "land": "Land",
   "land_question": "Does your event require a physical location?",
-  "land_description": "If your event is happening in a physical location, you'll need to sort out some things first: finding land, getting permits, and making sure you have the right insurance. Bonfire doesn't have any guides for this stuff just yet, but we're working on it! Here are some other resources that communities have found useful. Add as many as you like to your blueprint:",
+  "land_description": "If your event is happening in a physical location, you'll need to sort out some things first: finding land, getting permits, and making sure you have the right insurance. Bonfire doesn't have any guides for this stuff just yet, but we're working on it!",
+  "tickets": "Tickets",
   "tickets_question": "Will you be selling tickets for your event?",
-  "tickets_description": "If you're selling tickets, you'll need to choose a ticketing platform. Here are some that the community has used:",
+  "tickets_description": "If you're selling tickets, you'll need to choose a ticketing platform.",
+  "volunteers": "Volunteers",
   "volunteers_question": "Will you be recruiting volunteers to help run your event?",
-  "volunteers_description": "If you're recruiting volunteers, you'll need a way to manage them. Here are some tools that communities have used:"
-
+  "volunteers_description": "If you're recruiting volunteers, you'll need a way to manage them.",
+  "your_blueprint": "Your Blueprint",
+  "blueprint_description": "Your custom event blueprint from Project Bonfire. This contains useful information to help your team make things happen."
 }

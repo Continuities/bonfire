@@ -1,5 +1,6 @@
 import { ToolService, ValorService, CommunityService } from '$lib/service';
 import { middleware } from '$lib/service';
+import BlueprintService from '$lib/service/supabase/blueprint-service';
 import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 import { locale } from 'svelte-i18n';
@@ -19,6 +20,7 @@ const initServices: Handle = async ({ event, resolve }) => {
 	event.locals.services.valor = ValorService(event.locals);
 	event.locals.services.tool = ToolService(event.locals);
 	event.locals.services.community = CommunityService(event.locals);
+	event.locals.services.blueprint = BlueprintService(event.locals);
 	return resolve(event);
 };
 

@@ -12,4 +12,7 @@ values
   ('leaflet', 'mapping'),
   ('leaflet', 'opensource'),
   ('loomio', 'democracy'),
-  ('loomio', 'opensource')
+  ('loomio', 'opensource'),
+  ('volunteer-next', 'volunteer_management'),
+  ('volunteer-next', 'opensource'),
+  ('ics-100', 'event-training');

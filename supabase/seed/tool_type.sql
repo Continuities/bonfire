@@ -54,4 +54,13 @@ values
       "en": "Tools that facilitate collective decision-making processes, allowing communities to participate in governance and policy-making.",
       "fr": "Des outils qui facilitent les processus de prise de décision collective, permettant aux communautés de participer à la gouvernance et à l''élaboration des politiques."
     }'
+  ),
+  (
+    'event-training',
+    '🎓',
+    '{"en": "Event Training", "fr": "Formation Événementielle"}',
+    '{
+      "en": "Courses and resources that provide training and guidance for organising and managing events.",
+      "fr": "Cours et ressources offrant formation et conseils pour l''organisation et la gestion d''événements."
+    }'
   )

@@ -15,6 +15,7 @@ declare global {
 				tool: Service.ToolService;
 				valor: Service.ValorService;
 				community: Service.CommunityService;
+				blueprint: Service.BlueprintService;
 			};
 		}
 		// interface PageData {}
@@ -38,6 +39,11 @@ declare global {
 		interface CommunityService {
 			getCommunities: (filter?: Filter.CommunityFilter) => Promise<Model.Community[]>;
 			addCommunity: (community: Model.Community) => Promise<void>;
+		}
+
+		interface BlueprintService {
+			saveBlueprint: (sections: Blueprint.BlueprintSection[]) => Promise<Blueprint.Blueprint>;
+			getBlueprint: (id: Blueprint.BlueprintId) => Promise<Blueprint.Blueprint>;
 		}
 	}
 
@@ -114,7 +120,7 @@ declare global {
 		type BlueprintSectionId = 'land' | 'tickets' | 'volunteers';
 		interface Blueprint {
 			id: BlueprintId;
-			steps: BlueprintSection[];
+			sections: BlueprintSection[];
 		}
 		interface BlueprintQuestion {
 			section: BlueprintSectionId;

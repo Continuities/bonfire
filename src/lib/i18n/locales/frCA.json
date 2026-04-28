@@ -62,5 +62,25 @@
   "add_text": "Ajouter {text}",
   "location_filter": "Emplacement",
   "tool_filter": "Outil",
-  "valor_filter": "Valeur"
+  "valor_filter": "Valeur",
+
+  "start_an_event": "Lancer un événement",
+  "start_an_event_description": "Ce blueprint est conçu pour vous aider à planifier votre prochain événement communautaire. Que vous organisiez un festival, une fête de quartier, ou une manifestation, ce guide vous aidera à réfléchir à certains des éléments clés pour faire de votre événement un succès. Commencez par répondre à quelques questions, et nous vous fournirons un plan d'action personnalisé pour vous aider à démarrer.",
+  "start": "Commencer",
+  "back": "Retour",
+  "next": "Suivant",
+  "finish": "Terminer",
+  "here_are_some": "Voici quelques outils que d'autres communautés utilisent pour cette partie de l'expérience:",
+  "here_are_some_single": "Voici un outil que d'autres communautés utilisent pour cette partie de l'expérience:",
+  "land": "Terrain",
+  "land_question": "Votre événement nécessite-t-il un emplacement physique?",
+  "land_description": "Si votre événement se déroule dans un emplacement physique, vous devrez d'abord régler certaines choses : trouver un terrain, obtenir des permis et vous assurer que vous avez la bonne assurance. Bonfire n'a pas encore de guides pour ces aspects, mais nous y travaillons !",
+  "tickets": "Billets",
+  "tickets_question": "Votre événement nécessite-t-il des billets ou une inscription?",
+  "tickets_description": "Si votre événement nécessite des billets ou une inscription, vous aurez besoin d'un moyen de les vendre ou de les distribuer. Il existe de nombreux outils pour cela, mais nous vous recommandons de choisir un outil qui correspond à vos besoins spécifiques et à votre budget. Certains outils sont gratuits, tandis que d'autres prennent une commission sur les ventes de billets. Assurez-vous de lire les petits caractères avant de choisir un outil.",
+  "volunteers": "Bénévoles",
+  "volunteers_question": "Votre événement nécessite-t-il des bénévoles?",
+  "volunteers_description": "Si votre événement nécessite des bénévoles, vous aurez besoin d'un moyen de les recruter, de les organiser et de communiquer avec eux. Il existe de nombreux outils pour cela, mais nous vous recommandons de choisir un outil qui correspond à vos besoins spécifiques et à votre budget. Certains outils sont gratuits, tandis que d'autres prennent une commission sur les dons ou les inscriptions des bénévoles. Assurez-vous de lire les petits caractères avant de choisir un outil.",
+  "your_blueprint": "Votre Plan d'Action",
+  "blueprint_description": "Voici votre plan d'action personnalisé pour organiser votre événement. N'oubliez pas que ce n'est qu'un guide, et que vous pouvez l'adapter à vos besoins spécifiques. Bonne chance, et amusez-vous bien !"
 }
