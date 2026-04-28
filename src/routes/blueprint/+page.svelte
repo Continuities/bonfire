@@ -8,17 +8,26 @@
 	import ToolsList from '@view/ToolsList.svelte';
 	import { getStores } from '$lib/context';
 
-	const BLUEPRINT_QUESTIONS: Blueprint.BlueprintStep[] = [
+	const BLUEPRINT_QUESTIONS: Blueprint.BlueprintQuestion[] = [
 		{
-			title: 'question_land',
-			description: 'question_land_description',
+			section: 'land',
+			question: 'land_question',
+			description: 'land_description',
 			related_tool: 'event-training',
 			allow_many_tools: true
 		},
 		{
-			title: 'question_tickets',
-			description: 'question_tickets_description',
+			section: 'tickets',
+			question: 'tickets_question',
+			description: 'tickets_description',
 			related_tool: 'ticketing',
+			tool_required: true
+		},
+		{
+			section: 'volunteers',
+			question: 'volunteers_question',
+			description: 'volunteers_description',
+			related_tool: 'volunteer_management',
 			tool_required: true
 		}
 	];
@@ -26,26 +35,32 @@
 	const submitAnswer = () => {
 		if (currentAnswer === 'yes') {
 			const question = BLUEPRINT_QUESTIONS[currentQuestionIndex];
-			blueprintSteps[currentQuestionIndex] = question;
+			blueprintSections[currentQuestionIndex] = {
+				id: question.section,
+				selected_tools: currentTools
+			};
 		} else {
-			blueprintSteps[currentQuestionIndex] = null;
+			blueprintSections[currentQuestionIndex] = null;
 		}
-		currentQuestionIndex++;
-		currentAnswer = undefined;
+		if (currentQuestionIndex < BLUEPRINT_QUESTIONS.length - 1) {
+			currentQuestionIndex++;
+			currentAnswer = undefined;
+		}
 	};
 
 	const goBack = () => {
 		currentQuestionIndex--;
-		currentAnswer = blueprintSteps[currentQuestionIndex] ? 'yes' : 'no';
+		currentAnswer = blueprintSections[currentQuestionIndex] ? 'yes' : 'no';
 	};
 
 	let { tools } = getStores();
 
 	let currentQuestionIndex = $state<number>(-1);
 	let currentAnswer = $state<'yes' | 'no' | undefined>();
-	let blueprintSteps = $state<Array<Blueprint.BlueprintStep | null>>([]);
+	let blueprintSections = $state<Array<Blueprint.BlueprintSection | null>>([]);
 
 	let currentQuestion = $derived(BLUEPRINT_QUESTIONS[currentQuestionIndex]);
+	let currentTools = $derived(blueprintSections[currentQuestionIndex]?.selected_tools ?? []);
 	let relatedTools = $derived(
 		currentQuestion?.related_tool
 			? Object.fromEntries(
@@ -53,44 +68,59 @@
 				)
 			: ({} as Record<Model.ToolId, Model.Tool>)
 	);
+	let submitDisabled = $derived(
+		currentQuestionIndex < 0 ||
+			currentAnswer === undefined ||
+			(currentAnswer === 'yes' && currentQuestion?.tool_required && currentTools.length === 0)
+	);
 </script>
 
 <PageInfo title={$_('start_an_event')} description={$_('start_an_event_description')} />
-<Stack gap={2}>
+<Stack gap={3}>
 	{#if currentQuestionIndex === -1}
 		<p>{$_('start_an_event_description')}</p>
-		<Stack direction="row" justify="end" gap={1}>
+		<Stack direction="row" justify="start" gap={1}>
 			<Button onclick={() => (currentQuestionIndex = 0)}>{$_('start')}</Button>
 		</Stack>
 	{:else}
-		<p>{$_(currentQuestion.title)}</p>
-		<SegmentedButton segments={['yes', 'no']} singleSelect bind:selected={currentAnswer}>
-			{#snippet segment(segment)}
-				<Segment {segment}>
-					<Label>{$_(segment)}</Label>
-				</Segment>
-			{/snippet}
-		</SegmentedButton>
-		{#if currentAnswer === 'yes'}
-			<p>{$_(currentQuestion.description)}</p>
-			{#if currentQuestion.related_tool}
-				<ToolsList
-					tools={relatedTools}
-					select
-					multiselect={currentQuestion.allow_many_tools}
-					fullWidth
-				/>
+		<Stack gap={0}>
+			<p style="font-weight:bold">{$_(currentQuestion.question)}</p>
+			<SegmentedButton segments={['yes', 'no']} singleSelect bind:selected={currentAnswer}>
+				{#snippet segment(segment)}
+					<Segment {segment}>
+						<Label>{$_(segment)}</Label>
+					</Segment>
+				{/snippet}
+			</SegmentedButton>
+			{#if currentAnswer === 'yes'}
+				<p>{$_(currentQuestion.description)}</p>
+				{#if currentQuestion.related_tool}
+					<ToolsList
+						tools={relatedTools}
+						select
+						multiselect={currentQuestion.allow_many_tools}
+						fullWidth
+						bind:selected={currentTools}
+					/>
+				{/if}
 			{/if}
-		{/if}
-		<Stack direction="row" justify="end" gap={1}>
+		</Stack>
+		<Stack direction="row" justify="start" gap={1}>
 			<Button onclick={goBack} disabled={currentQuestionIndex <= 0}>{$_('back')}</Button>
-			<Button
-				onclick={submitAnswer}
-				disabled={currentQuestionIndex >= BLUEPRINT_QUESTIONS.length - 1 ||
-					currentQuestionIndex < 0 ||
-					currentAnswer === undefined}
-				>{$_('next')}
-			</Button>
+			{#if currentQuestionIndex < BLUEPRINT_QUESTIONS.length - 1}
+				<Button onclick={submitAnswer} disabled={submitDisabled}>{$_('next')}</Button>
+			{:else}
+				<form method="POST">
+					<input
+						type="hidden"
+						name="sections"
+						value={JSON.stringify(blueprintSections.filter(Boolean))}
+					/>
+					<Button type="submit" onclick={submitAnswer} disabled={submitDisabled}
+						>{$_('finish')}</Button
+					>
+				</form>
+			{/if}
 		</Stack>
 	{/if}
 </Stack>

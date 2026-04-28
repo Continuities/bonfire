@@ -71,7 +71,13 @@
   "yes": "Yes",
   "no": "No",
   "next": "Next",
-  "question_land": "Does your event require a physical location?",
-  "question_land_description": "If your event is happening in a physical location, you'll need to sort out some things first: finding land, getting permits, and making sure you have the right insurance. Bonfire doesnt yet have any guides for this stuff, but we're working on it! Here are some other resources that communities have found useful. Add as many as you like to your blueprint:"
+  "finish": "Finish",
+  "back": "Back",
+  "land_question": "Does your event require a physical location?",
+  "land_description": "If your event is happening in a physical location, you'll need to sort out some things first: finding land, getting permits, and making sure you have the right insurance. Bonfire doesn't have any guides for this stuff just yet, but we're working on it! Here are some other resources that communities have found useful. Add as many as you like to your blueprint:",
+  "tickets_question": "Will you be selling tickets for your event?",
+  "tickets_description": "If you're selling tickets, you'll need to choose a ticketing platform. Here are some that the community has used:",
+  "volunteers_question": "Will you be recruiting volunteers to help run your event?",
+  "volunteers_description": "If you're recruiting volunteers, you'll need a way to manage them. Here are some tools that communities have used:"
 
 }

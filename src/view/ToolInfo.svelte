@@ -22,7 +22,7 @@
 		</a>
 	</Stack>
 	{#if usageCount > 0}
-		<a class="tool-uses" href={`/network/?uses_tool=${tool.id}`}>
+		<a class="tool-uses" target="_blank" rel="noopener" href={`/network/?uses_tool=${tool.id}`}>
 			{$_('used_by_count', { values: { count: usageCount } })}
 		</a>
 	{/if}
@@ -36,6 +36,7 @@
 	.tool-cell {
 		display: flex;
 		flex-direction: column;
+		align-items: start;
 		white-space: normal;
 		gap: 1rem;
 		min-height: 100px;

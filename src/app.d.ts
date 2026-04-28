@@ -111,16 +111,22 @@ declare global {
 
 	namespace Blueprint {
 		type BlueprintId = string;
+		type BlueprintSectionId = 'land' | 'tickets' | 'volunteers';
 		interface Blueprint {
 			id: BlueprintId;
-			steps: BlueprintStep[];
+			steps: BlueprintSection[];
 		}
-		interface BlueprintStep {
-			title: string;
+		interface BlueprintQuestion {
+			section: BlueprintSectionId;
+			question: string;
 			description: string;
 			related_tool?: Model.ToolTypeId;
 			tool_required?: boolean;
 			allow_many_tools?: boolean;
+		}
+		interface BlueprintSection {
+			id: BlueprintSectionId;
+			selected_tools?: Model.ToolId[];
 		}
 	}
 
