@@ -6,13 +6,25 @@
 		children?: Snippet;
 		gap?: number;
 		direction?: 'row' | 'column';
+		justify?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
+		align?: 'start' | 'end' | 'center' | 'stretch';
 	} & View.MarginProps;
 	let allProps: Props = $props();
 
-	let { children, direction = 'column', gap = 1 } = $derived(allProps);
+	let {
+		children,
+		direction = 'column',
+		gap = 1,
+		justify = 'start',
+		align = 'stretch'
+	} = $derived(allProps);
 </script>
 
-<div class="stack" class:row={direction === 'row'} style={`gap:${gap}rem ${marginStyle(allProps)}`}>
+<div
+	class="stack"
+	class:row={direction === 'row'}
+	style={`gap:${gap}rem ${marginStyle(allProps)}; justify-content: ${justify}; align-items: ${align};`}
+>
 	{@render children?.()}
 </div>
 

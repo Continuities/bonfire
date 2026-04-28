@@ -109,6 +109,21 @@ declare global {
 		}
 	}
 
+	namespace Blueprint {
+		type BlueprintId = string;
+		interface Blueprint {
+			id: BlueprintId;
+			steps: BlueprintStep[];
+		}
+		interface BlueprintStep {
+			title: string;
+			description: string;
+			related_tool?: Model.ToolTypeId;
+			tool_required?: boolean;
+			allow_many_tools?: boolean;
+		}
+	}
+
 	namespace View {
 		type MarginValue = number; // For now, just rem units
 		interface MarginProps {

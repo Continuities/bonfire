@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Paper, { Content, Title } from '@smui/paper';
-	import FormField from '@smui/form-field';
 	import Button from '@smui/button';
 	import TextField from '@smui/textfield';
 	import { _ } from 'svelte-i18n';

@@ -13,11 +13,11 @@
 </script>
 
 <div class="tool-cell">
-	<Stack gap={0.3}>
+	<Stack gap={0.3} align="start">
 		<div class="tool-name">
 			{tool.name}
 		</div>
-		<a href={tool.url} target="_blank" rel="noopener">
+		<a href={tool.url} target="_blank" rel="noopener" onclick={(e) => e.stopPropagation()}>
 			{tool.url}
 		</a>
 	</Stack>

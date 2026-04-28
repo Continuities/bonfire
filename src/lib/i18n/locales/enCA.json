@@ -50,6 +50,7 @@
   "login_error_content": "There was an error logging in. Please check your email and password and try again.",
   "see_all": "See all",
   "no_one_yet": "No one yet...",
+  "nothing_yet": "Nothing yet...",
   "communities_using": "Communities using {tool}",
   "communities_upholding": "Communities upholding {valor}",
   "communities_in_location": "Communities in {location}",
@@ -62,5 +63,15 @@
   "add_text": "Add {text}",
   "location_filter": "Location",
   "tool_filter": "Tool",
-  "valor_filter": "Value"
+  "valor_filter": "Value",
+  "start_an_event": "Start an Event",
+  "start_an_event_description": "Starting an event can feel at times exhilarating and overwhelming. Thankfully, people have done this stuff before! Just a few questions, and we'll set up your personal event blueprint.",
+
+  "start": "Start",
+  "yes": "Yes",
+  "no": "No",
+  "next": "Next",
+  "question_land": "Does your event require a physical location?",
+  "question_land_description": "If your event is happening in a physical location, you'll need to sort out some things first: finding land, getting permits, and making sure you have the right insurance. Bonfire doesnt yet have any guides for this stuff, but we're working on it! Here are some other resources that communities have found useful. Add as many as you like to your blueprint:"
+
 }
